@@ -2,7 +2,11 @@
   "development": {
     "username": "root",
     "password": "",
+<<<<<<< HEAD
     "database": "Wander",
+=======
+    "database": "User",
+>>>>>>> 1f6dd01c7091f477ab35133c21947a3eafb04b10
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
