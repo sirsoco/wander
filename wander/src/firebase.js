@@ -15,7 +15,10 @@ firebase.auth().getRedirectResult().then(function(result) {
     //     //make a post
     // }
     // The signed-in user info.
+    console.log(result)
     var user = result.user;
+    console.log(user)
+
   }).catch(function(error) {
     // Handle Errors here.
     var errorCode = error.code;
