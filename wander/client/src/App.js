@@ -4,6 +4,8 @@ import { Button } from 'react-bootstrap'
 import firebase from './config';
 import axios from "axios";
 // import ReactDOM from "react-dom";
+import Nav from './components/Nav'
+import Form from './components/userForm'
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -19,11 +21,17 @@ function App() {
 
   return (
     <div className="App">
-      <Button onClick={login} variant="primary" size="lg" block>
+    <div>
+      <Nav />
+    </div>
+    <div>
+      <Form />
+    </div>
+    <Button onClick={login} variant="primary" size="lg" block>
         Block level button
       </Button>
-
-    </div >
+    </div>
+    
   );
 
 }
