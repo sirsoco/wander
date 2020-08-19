@@ -17,6 +17,13 @@ class Register extends Component {
     destination: ""
   };
 
+  //component didmmount 
+    // GET AXIOS CALL HERE
+  
+    // capture user info in state
+  // organize user profile info into an obj
+  // state obj to be "set up exactly the way we want req.body to be understood"
+
   handleInputChange = event => {
     const { name, age, career, education, location, type,destination, value } = event.target;
     this.setState({
@@ -25,7 +32,7 @@ class Register extends Component {
   };
 
 
-
+  // write PUT route in this function
   handleFormSubmit = event => {
     event.preventDefault();
     this.postUser();
@@ -46,8 +53,8 @@ class Register extends Component {
 
 export default Register;
 
-<Form
+{/* <Form
 handleInputChange={this.handleInputChange}
 handleFormSubmit={this.handleFormSubmit}
 q={this.state.q}
-/> 
+/>  */}

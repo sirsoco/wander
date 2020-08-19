@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     var user = sequelize.define("user" , {
     uid: {
     type: DataTypes.STRING,
+    primaryKey: true,
     allowNull: false
     },
     name: {
@@ -42,3 +43,5 @@ module.exports = function(sequelize, DataTypes) {
 
     return user;
 }
+
+
