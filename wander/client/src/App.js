@@ -14,7 +14,7 @@ function App() {
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
         axios.post("/api/user", {uid: user.uid}).then(result => result.data)
-        console.log(user.uid)
+        console.log("UID: ", user.uid)
       })
       .catch(console.error)
     };
