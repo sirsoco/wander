@@ -4,7 +4,7 @@ const apiRoutes = require("./api-routes.js");
 
 
 
-router.use("/api-routes", apiRoutes);
+router.use("/api", apiRoutes);
 
 
 

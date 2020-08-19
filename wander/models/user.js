@@ -4,17 +4,16 @@ module.exports = function(sequelize, DataTypes) {
     var user = sequelize.define("user" , {
     uid: {
     type: DataTypes.STRING,
-    allowNull: false,
-    defaultValue: "test"
-    } /*,
+    allowNull: false
+    },
     name: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
 
     },    
     age: {
     type: DataTypes.INTEGER,
-    allowNull: false
+    allowNull: true
     },  
 
     career: {
@@ -28,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
     
     currentLocation: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: true
     },
     hobbies: {
         type: DataTypes.STRING,
@@ -36,9 +35,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     destination: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: true
     },
-        */
+    
     })
 
     return user;
