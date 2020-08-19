@@ -1,41 +1,90 @@
 import React from 'react'
 import css from './Form.css'
 
-export default function Form() {
+export default function Form(handleInputChange, handleFormSubmit) {
 
     return (
         <div>
             <div className="Border">
             <form>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Name</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="What's your name?"/>
+                    <label for="nameInput">Name</label>
+                    <input 
+                    type="email" 
+                    class="form-control" 
+                    id="nameInput" 
+                    aria-describedby="emailHelp" 
+                    placeholder="What's your name?"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Age</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Age"/>
+                    <label for="ageInput">Age</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="ageInput" 
+                    placeholder="Age"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Career</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Career"/>
+                    <label for="careerInput">Career</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="careerInput" 
+                    placeholder="Career"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Education</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Education"/>
+                    <label for="educationInput">Education</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="educationInput" 
+                    placeholder="Education"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Current Location</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Current Location"/>
+                    <label for="locationInput">Current Location</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="locationInput" 
+                    placeholder="Current Location"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Destination</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Destination"/>
+                    <label for="destinationInput">Destination</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="destinationInput" 
+                    placeholder="Destination"
+                    onClick={handleInputChange}
+                    />
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputPassword1">Adventure Type</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Adventure Type"/>
+                    <label for="adventureInput">Adventure Type</label>
+                    <input 
+                    type="password" 
+                    class="form-control" 
+                    id="adventureInput" 
+                    placeholder="Adventure Type"
+                    onClick={handleInputChange}
+                    />
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button 
+                type="submit" 
+                class="btn btn-primary"
+                onClick={handleFormSubmit}
+                >
+                    Submit
+                </button>
             </form>
             </div>
         </div>
