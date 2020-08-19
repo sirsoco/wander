@@ -18,7 +18,7 @@ class Register extends Component {
   };
 
   //component didmmount 
-    // GET AXIOS CALL HERE
+    // call getUser function here 
   
     // capture user info in state
   // organize user profile info into an obj
@@ -32,10 +32,12 @@ class Register extends Component {
   };
 
 
+  // getUser function, make get axios call here 
+
   // write PUT route in this function
   handleFormSubmit = event => {
     event.preventDefault();
-    this.postUser();
+    // PUT axios call here
   };
 
 
