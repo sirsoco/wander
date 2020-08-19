@@ -46,8 +46,4 @@ class Register extends Component {
 
 export default Register;
 
-<Form
-handleInputChange={this.handleInputChange}
-handleFormSubmit={this.handleFormSubmit}
-q={this.state.q}
-/> 
+

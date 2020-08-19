@@ -1,4 +1,5 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
 import './App.css';
 import { Button } from 'react-bootstrap'
 import firebase from './config.js'
@@ -13,6 +14,12 @@ function App() {
     <div className="App">
     <div>
       <Header />
+    </div>
+    <div>
+      {/* <Switch>
+        < Route />
+        < Route />
+      </Switch> */}
     </div>
     <div>
       <Form />
