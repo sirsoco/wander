@@ -10,10 +10,10 @@ export default function Form(handleInputChange, handleFormSubmit) {
                 <div class="form-group">
                     <label for="nameInput">Name</label>
                     <input 
-                    type="email" 
+                    type="text" 
                     class="form-control" 
                     id="nameInput" 
-                    aria-describedby="emailHelp" 
+                    // aria-describedby="emailHelp" 
                     placeholder="What's your name?"
                     onClick={handleInputChange}
                     />
@@ -21,7 +21,7 @@ export default function Form(handleInputChange, handleFormSubmit) {
                 <div class="form-group">
                     <label for="ageInput">Age</label>
                     <input 
-                    type="password" 
+                    type="number" 
                     class="form-control" 
                     id="ageInput" 
                     placeholder="Age"
@@ -31,7 +31,7 @@ export default function Form(handleInputChange, handleFormSubmit) {
                 <div class="form-group">
                     <label for="careerInput">Career</label>
                     <input 
-                    type="password" 
+                    type="text" 
                     class="form-control" 
                     id="careerInput" 
                     placeholder="Career"
@@ -41,7 +41,7 @@ export default function Form(handleInputChange, handleFormSubmit) {
                 <div class="form-group">
                     <label for="educationInput">Education</label>
                     <input 
-                    type="password" 
+                    type="text" 
                     class="form-control" 
                     id="educationInput" 
                     placeholder="Education"
@@ -51,7 +51,7 @@ export default function Form(handleInputChange, handleFormSubmit) {
                 <div class="form-group">
                     <label for="locationInput">Current Location</label>
                     <input 
-                    type="password" 
+                    type="text" 
                     class="form-control" 
                     id="locationInput" 
                     placeholder="Current Location"
@@ -59,22 +59,22 @@ export default function Form(handleInputChange, handleFormSubmit) {
                     />
                 </div>
                 <div class="form-group">
-                    <label for="destinationInput">Destination</label>
+                    <label for="adventureInput">Hobbies</label>
                     <input 
-                    type="password" 
+                    type="text" 
                     class="form-control" 
-                    id="destinationInput" 
-                    placeholder="Destination"
+                    id="adventureInput" 
+                    placeholder="Adventure Type"
                     onClick={handleInputChange}
                     />
                 </div>
                 <div class="form-group">
-                    <label for="adventureInput">Adventure Type</label>
+                    <label for="destinationInput">Destination</label>
                     <input 
-                    type="password" 
+                    type="text" 
                     class="form-control" 
-                    id="adventureInput" 
-                    placeholder="Adventure Type"
+                    id="destinationInput" 
+                    placeholder="Destination"
                     onClick={handleInputChange}
                     />
                 </div>

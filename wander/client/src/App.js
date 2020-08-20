@@ -6,6 +6,7 @@ import axios from "axios";
 // import ReactDOM from "react-dom";
 import Nav from './components/Nav'
 import Form from './components/userForm'
+import SimpleMap from './components/Map/index.js'
 
 var provider = new firebase.auth.GoogleAuthProvider();
 
@@ -30,7 +31,17 @@ function App() {
     <Button onClick={login} variant="primary" size="lg" block>
         Block level button
       </Button>
+      <div>
+      <SimpleMap    
+          // defaultCenter={this.props.center}
+          // center={this.state.center}
+          // defaultZoom={this.props.zoom}
+          // onChildMouseEnter={this.onChildMouseEnter}
+          // onChildMouseLeave={this.onChildMouseLeave}
+        />
+      </div>
     </div>
+
     
   );
 
