@@ -15,6 +15,13 @@ export default function login() {
           .then(({user}) => {
             axios.post("/api/user", {uid: user.uid}).then(result => result.data)
             console.log("UID: ", user.uid)
+            // firebase.auth().onAuthStateChanged(function(user) {
+            //     if (user.uid == axios.get("/api/user/:uid")) {
+            //       // User is signed in.
+            //     } else {
+            //       // No user is signed in.
+            //     }
+            //   });
           }) /*.then() */
             // I want to store the uid of the user signing up into variable. 
                 //then I want to call the /api/user/:uid with the above uid 
