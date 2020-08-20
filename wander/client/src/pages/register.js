@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import axios from "axios";
+// import axios from "axios";
 import UserContext from "../utils/userContext";
 
 // ***** Register PAGE ******

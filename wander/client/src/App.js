@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Nav from "./components/Nav"
 import SimpleMap from "./pages/map.js"
-import Login from "./pages/login.js"
+import Signup from "./pages/signUp.js"
 import Register from "./pages/register.js"
 import UserContext from "./utils/userContext";
 // ***** ROUTERS ******
@@ -22,7 +22,7 @@ return (
       <Nav/>
       </div>
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Signup} />
         <Route exact path="/map" component={SimpleMap} />
         <Route exact path="/register" component={Register} />
       </Switch>
