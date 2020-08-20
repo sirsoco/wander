@@ -1,31 +1,34 @@
-import React from 'react';
+import React, {useState} from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
-import { Button } from 'react-bootstrap'
-import firebase from './config';
-import axios from "axios";
-// import ReactDOM from "react-dom";
-
-var provider = new firebase.auth.GoogleAuthProvider();
-
+import Nav from "./components/Nav"
+import SimpleMap from "./pages/map.js"
+import Login from "./pages/login.js"
+import Register from "./pages/register.js"
+import UserContext from "./utils/userContext";
+// ***** ROUTERS ******
+// =============================================================
 function App() {
-  const login = () => {
-    firebase.auth().signInWithPopup(provider)
-      .then(({user}) => {
-        axios.post("/api/user", {uid: user.uid}).then(result => result.data)
-        console.log(user.uid)
-      })
-      .catch(console.error)
-    };
-
-  return (
-    <div className="App">
-      <Button onClick={login} variant="primary" size="lg" block>
-        Block level button
-      </Button>
-
-    </div >
+  const [user, setUserState] = useState({
+    id: "",
+    setID: (id) => {
+      setUserState({...user, id})
+    }
+  })
+return (
+  <Router >
+    <UserContext.Provider value={user} >
+      <div>
+      <Nav/>
+      </div>
+      <Switch>
+        <Route exact path="/" component={Login} />
+        <Route exact path="/map" component={SimpleMap} />
+        <Route exact path="/register" component={Register} />
+      </Switch>
+    </UserContext.Provider>
+      
+  </Router>
   );
-
 }
-
 export default App;
