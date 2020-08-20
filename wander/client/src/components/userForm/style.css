@@ -1,0 +1,21 @@
+form{
+    margin: 1rem;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #f9f9f9;
+    align-items: center;
+}
+.header__logo {
+    height: 40px;
+}
+.header__icon{
+    padding: 20px;
+}
+h1{
+    font-family: linotype-didot,serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 4rem;
+}
