@@ -1,26 +1,35 @@
-// import React, { Component } from "react";
-// // import GoogleMapReact from 'google-map-react';
-// import Map from '../components/Map/index.js';
-// // import API from "../utils/api";
+import React, { Component } from 'react'
+import GoogleMapReact from 'google-map-react';
 
+const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-// class SimpleMap extends Component {
+class SimpleMap extends Component {
+  static defaultProps = {
+    center: {
+      lat: 59.95,
+      lng: 30.33
+    },
+    zoom: 11
+  };
 
+  render() {
+    return (
+      // Important! Always set the container height explicitly
+      <div style={{ height: '100vh', width: '100%' }}>
+        <GoogleMapReact
+          bootstrapURLKeys={{ key:'"AIzaSyDhIP2Tps4GjKacpqtpjJ-sI7rBrTcz15c"' }}
+          defaultCenter={this.props.center}
+          defaultZoom={this.props.zoom}
+        >
+          <AnyReactComponent
+            lat={59.955413}
+            lng={30.337844}
+            text="My Marker"
+          />
+        </GoogleMapReact>
+      </div>
+    );
+  }
+}
 
-//   render() {
-//     return (
-//       // Important! Always set the container height explicitly
-//       <div style={{ height: '100vh', width: '100%' }}>
-//         <Map    
-//           defaultCenter={this.props.center}
-//           center={this.state.center}
-//           defaultZoom={this.props.zoom}
-//           onChildMouseEnter={this.onChildMouseEnter}
-//           onChildMouseLeave={this.onChildMouseLeave}
-//         />
-//       </div>
-//     );
-//   }
-// }
-
-// export default SimpleMap;
+export default SimpleMap;

@@ -1,5 +1,3 @@
-
-
 var db = require("../models");
 // var express = require('express');
 const router = require('express').Router()
@@ -49,6 +47,7 @@ router.post("/user", function (req, res) {
     .then(function(dbuser) {
       res.json(dbuser);
     }).catch(function (err) {
+      console.log('USER CREATE ERROR: ', err)
         res.status(401).json(err);
       });
   });
