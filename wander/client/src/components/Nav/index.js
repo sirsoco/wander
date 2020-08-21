@@ -10,8 +10,8 @@ export default function Nav() {
             <IconButton>
                 <PersonIcon className="header__icon" fontSize="large"/>
             </IconButton>
-                <h1>Wander</h1>
-            < IconButton>
+                <h1>Wandr</h1>
+                <b>a place to wandr</b>            < IconButton>
                 <ForumIcon className="header__icon" fontSize="large"/>
             </IconButton>
         </div>
