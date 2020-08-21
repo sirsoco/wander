@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import './App.css';
 import Nav from "./components/Nav"
-import SimpleMap from "./pages/map.js"
+import Map from "./pages/map.js"
 import Signup from "./pages/signUp.js"
 import UserContext from "./utils/userContext";
 import Register from "./pages/register"
@@ -54,7 +54,7 @@ return (
       </div>
       <Switch>
         <Route exact path="/" component={Signup} />
-        <Route exact path="/map" component={SimpleMap} />
+        <Route exact path="/map" component={Map} />
         <Route exact path="/register" component={Register} />
       </Switch>
     </UserContext.Provider>
