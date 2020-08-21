@@ -14,10 +14,8 @@ export default {
             .then(result => result.data),
 
     // UPDATE a profile based on uid
-    updateProfile: (uid) =>
-        axios.get(`/api/user/profile/${uid}`)
-            .then(result => result.data)
-
+    updateProfile: (uid,config) =>
+        axios.put(`/api/user/profile/${uid}`, config )
+            .then((result) => {return result.data} )
 };
-
 
