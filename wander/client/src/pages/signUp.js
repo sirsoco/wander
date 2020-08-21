@@ -23,6 +23,8 @@ function Signup(props) {
             userState.setID(user.uid)
             // Save refresh-token to local storage
             localStorage.setItem("token", user.refreshToken)
+            // save photo URL to local storage
+            localStorage.setItem("photo", user.photoURL)
             // Redirect to main pg (register.js)
             props.history.push("/register")
 
