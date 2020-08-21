@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState, useEffect} from "react";
 import firebase from '../config.js';
 import { Button } from "react-bootstrap";
 import axios from "axios";
@@ -11,7 +11,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 function Signup(props) { 
   // CONNECT TO THE GLOBAL USER OBJECT to set the user's unique ID from firebase
   const userState = useContext(UserContext);
-
+  const [isLoading, setIsLoading] = useState(true);
   const signUp = () => {
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
@@ -21,7 +21,10 @@ function Signup(props) {
             console.log(user);
             // SET THE ID IN THE GLOBAL USER STATE
             userState.setID(user.uid)
-     
+            // Save refresh-token to local storage
+            localStorage.setItem("token", user.refreshToken)
+            // save photo URL to local storage
+            localStorage.setItem("photo", user.photoURL)
             // Redirect to main pg (register.js)
             props.history.push("/register")
 
@@ -30,12 +33,26 @@ function Signup(props) {
       .catch(console.error)
     };
 
-return (
-  // render html for what the "login pg" will look like
-  <Button onClick={signUp} variant="primary" size="lg" block>
-  Sign-Up With Google
-  </Button>
-)
+    useEffect(() => {
+      const token = localStorage.getItem("token");
+      if(token){
+        props.history.push("/map")
+      } else {
+        setIsLoading(false)
+      }
+    }, []);
+
+    if(isLoading){
+      return (
+        <p>Loading ...</p>
+      )
+    } else {
+      return (
+        <Button onClick={signUp} variant="primary" size="lg" block>
+        Sign-Up With Google
+        </Button>
+      )
+    }
 
 }
 export default Signup
