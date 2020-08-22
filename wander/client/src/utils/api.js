@@ -7,7 +7,7 @@ export default {
     // GET all users
     getAllUsers: () =>
         axios.get("/api/user/profile/")
-            .then(result => result.data),
+            .then(result => {return result.data}),
 
     // GET specific ser based on uid
     getUserProfile: (uid) =>
