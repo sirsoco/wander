@@ -39,7 +39,9 @@ const getUser = () => {
     // retrieve all users
     API.getAllUsers().then(
       (results) => {
-        console.log("results", results);
+        console.log("results", results)
+        var city = results[0].destination;
+        ;
       }
     )
   
