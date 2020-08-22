@@ -35,6 +35,13 @@ const getUser = () => {
     // retrieve destination city
     var city = results[0].destination;
     console.log(city);
+
+    // retrieve all users
+    API.getAllUsers().then(
+      (results) => {
+        console.log("results", results);
+      }
+    )
   
     
     // call api to convert the city into lat/long
