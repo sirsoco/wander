@@ -3,6 +3,7 @@ import UserContext from "../utils/userContext";
 import GoogleMapReact from "google-map-react";
 import API from "../utils/api";
 
+
 var photoURL = localStorage.getItem("photo");
 console.log("PHOTO URL: ", photoURL)
 const AnyReactComponent = ({ text }) => <img src={photoURL} width="50" height="50"  />;
@@ -25,6 +26,22 @@ function Map() {
     lat: "",
     lng: ""
   })
+
+  const getAllUsers = () => {
+    API.getAllUsers().then((results) => {
+      console.log("All results", results)
+      var city = results.map(results.destination)
+
+      API.getCoordinates(city).then((result) => {
+        console.log("Lat&Lon:", result);
+        // setLocation here
+        setLocation({
+          lat: result.lat, 
+          lng: result.lng
+        })
+      });
+    })
+  }
 
   const userState = useContext(UserContext);
   var uid = userState.id;

@@ -3,6 +3,8 @@ import firebase from '../config.js';
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import UserContext from "../utils/userContext";
+import Header from "../components/sign-up/index";
+import './styles/signUp.css';
 
 // ***** LOGIN PAGE ******
 // =============================================================
@@ -48,9 +50,16 @@ function Signup(props) {
       )
     } else {
       return (
-        <Button onClick={signUp} variant="primary" size="lg" block>
-        Sign-Up With Google
-        </Button>
+        <div>
+          <div>
+          <Header />
+          </div>
+          <div className="center">
+            <Button onClick={signUp} variant="primary" size="lg" >
+            Sign-Up With Google
+            </Button>
+          </div>
+        </div>  
       )
     }
 

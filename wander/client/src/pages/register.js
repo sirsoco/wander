@@ -3,6 +3,7 @@ import React, {useContext, useState} from "react";
 // import axios from "axios";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
+import './styles/register.css'
 // import "/src/components/userForm/style.css";
 // import UserContext from "../utils/userContext";
 
@@ -100,6 +101,7 @@ console.log("UID: ", userState.id)
 
 
   return ( 
+    <div className="border">
     <form onSubmit={handleFormSubmit} className="form-group">
       <div className="Border">
       <div>
@@ -218,6 +220,7 @@ console.log("UID: ", userState.id)
         </button>
       </div>
     </form>
+    </div>
   );
   
 }
