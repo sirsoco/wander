@@ -8,17 +8,17 @@ import useModal from "../components/Modal/useModal";
 
 function Map() {
 
-  var photoURL = localStorage.getItem("photo");
-  console.log("PHOTO URL: ", photoURL)
+  // var photoURL = localStorage.getItem("photo");
+  // console.log("PHOTO URL: ", photoURL)
 
-  const Marker = ({ text }) => <img src={photoURL} width="50" height="50" />;
+// pass Marker a photoURL prop to make it dynamic
+  const Marker = (props) => <img src={props.img} width="50" height="50" />;
 
   const {isShowing, toggle} = useModal();
 
   const [center, setCenter] = useState({
     lat: 39.0119,
     lng: 98.4842,
-    photoURL
   });
   const [zoom, setZoom] = useState({
     zoom: 0
@@ -36,7 +36,8 @@ function Map() {
           var city = result.destination;
           // console.log("CITY: ",city);
           // console.log("USER RESULT: ",result)
-
+            console.log("USER: ", result)
+            var photoURL = result.photoURL;
            await API.getCoordinates(city).then((result) => {
              console.log("RESULT: ", result)
             // setLocation here
@@ -47,7 +48,8 @@ function Map() {
             // }])
           setLocation(oldLocation => [...oldLocation, {
             lat: result.lat, 
-            lng: result.lng
+            lng: result.lng,
+            photoURL: photoURL
           }])
         });
       },
@@ -69,12 +71,12 @@ function Map() {
       >
         {/* location.lat && location.long here */}
         {location.map((latlng => {
-          // console.log('LOCATION ARRAY: ',location)
+          // console.log('LOCATION ARRAY: ',location)c
           return (
             <Marker 
             lat={latlng.lat}
             lng={latlng.lng}
-            img={latlng.image}
+            img={latlng.photoURL}
 
             onClick={() => console.log("You clicked me!")}
             />
