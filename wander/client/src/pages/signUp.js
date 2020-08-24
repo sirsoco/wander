@@ -16,14 +16,15 @@ function Signup(props) {
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
         // AXIOS CALL 
-        axios.post("/api/user", {uid: user.uid})
+        axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
           .then(() => {
             console.log(user);
             // SET THE ID IN THE GLOBAL USER STATE
             userState.setID(user.uid)
             // Save refresh-token to local storage
+            // userState.setImage(user.photoURL)
             localStorage.setItem("token", user.refreshToken)
-            // save photo URL to local storage
+            // save photo URL to local storage 
             localStorage.setItem("photo", user.photoURL)
             // Redirect to main pg (register.js)
             props.history.push("/register")
