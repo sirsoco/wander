@@ -38,7 +38,12 @@ module.exports = function(sequelize, DataTypes) {
     destination: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    photoURL: {
+        type: DataTypes.STRING,
+        allowNull: true
     }
+
 
     
     })

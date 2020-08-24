@@ -16,7 +16,7 @@ function Signup(props) {
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
         // AXIOS CALL 
-        axios.post("/api/user", {uid: user.uid })
+        axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
           .then(() => {
             console.log(user);
             // SET THE ID IN THE GLOBAL USER STATE

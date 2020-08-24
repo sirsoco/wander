@@ -15,27 +15,6 @@ function Map() {
 
   const {isShowing, toggle} = useModal();
 
-  useEffect(() => {
-   API.getAllUsers().then(
-      (result) => {      
-          result.map(async result => {
-          var city = result.destination;
-          console.log("CITY: ",city);
-          console.log("USER RESULT: ",result)
-
-           await API.getCoordinates(city).then((result) => {
-             console.log("RESULT: ", result)
-            // setLocation here
-            setLocation([...location, {
-              lat: result.lat, 
-              lng: result.lng
-            }])
-            console.log("LOCATION: ", location);    
-        });
-      },
-    )}
-  )}, []);
-
   const [center, setCenter] = useState({
     lat: 39.0119,
     lng: 98.4842,
@@ -50,10 +29,37 @@ function Map() {
   const userState = useContext(UserContext);
   var uid = userState.id;
 
+  useEffect(() => {
+   API.getAllUsers().then(
+      (result) => {      
+          result.map(async result => {
+          var city = result.destination;
+          // console.log("CITY: ",city);
+          // console.log("USER RESULT: ",result)
+
+           await API.getCoordinates(city).then((result) => {
+             console.log("RESULT: ", result)
+            // setLocation here
+              console.log("LOCATION: ", location); 
+            // setLocation([...location, {
+            //   lat: result.lat, 
+            //   lng: result.lng
+            // }])
+          setLocation(oldLocation => [...oldLocation, {
+            lat: result.lat, 
+            lng: result.lng
+          }])
+        });
+      },
+    )}
+  )}, []);
+
+
+
   // function handleClick () {
   //   console.log("i have been clicked")
   // }
-
+// console.log("LOCATION: ",location)
   return (
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
@@ -62,13 +68,13 @@ function Map() {
         defaultZoom={zoom.zoom}
       >
         {/* location.lat && location.long here */}
-        {location.map((location => {
-          console.log('LOCATION ARRAY: ',location)
+        {location.map((latlng => {
+          // console.log('LOCATION ARRAY: ',location)
           return (
             <Marker 
-            lat={location.lat}
-            lng={location.lng}
-            img={location.image}
+            lat={latlng.lat}
+            lng={latlng.lng}
+            img={latlng.image}
 
             onClick={() => console.log("You clicked me!")}
             />
