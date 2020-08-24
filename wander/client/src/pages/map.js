@@ -2,71 +2,59 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../utils/userContext";
 import GoogleMapReact from "google-map-react";
 import API from "../utils/api";
+import Modal from "../components/Modal/" ;
+import useModal from "../components/Modal/useModal";
+
 
 function Map() {
-var mapUsers = [{}];
-var photoURL = localStorage.getItem("photo");
-console.log("PHOTO URL: ", photoURL)
-const Marker = ({ text }) => <img src={photoURL} width="50" height="50"  />;
- 
+
+  var photoURL = localStorage.getItem("photo");
+  console.log("PHOTO URL: ", photoURL)
+
+  const Marker = ({ text }) => <img src={photoURL} width="50" height="50" />;
+
+  const {isShowing, toggle} = useModal();
+
   useEffect(() => {
-     // retrieve all users
-     var city = null;
-     API.getAllUsers().then(
-      (result => {
-        result.map( result => {
-          city = result.destination;
+   API.getAllUsers().then(
+      (result) => {      
+          result.map(async result => {
+          var city = result.destination;
           console.log("CITY: ",city);
-          console.log("RESULT: ",result)
+          console.log("USER RESULT: ",result)
+
+           await API.getCoordinates(city).then((result) => {
+             console.log("RESULT: ", result)
+            // setLocation here
+            setLocation([...location, {
+              lat: result.lat, 
+              lng: result.lng
+            }])
+            console.log("LOCATION: ", location);    
         });
-      }
-    ),
-    API.getCoordinates(city).then((result) => {
-      console.log("Lat&Lon:", result);
-      // setLocation here
-      setLocation({
-        lat: result.lat, 
-        lng: result.lng
-      })
-    }),
+      },
+    )}
   )}, []);
 
   const [center, setCenter] = useState({
     lat: 39.0119,
-    lng: 98.4842
+    lng: 98.4842,
+    photoURL
   });
   const [zoom, setZoom] = useState({
     zoom: 0
   });
 
-  const [location, setLocation] = useState({
-    lat: "",
-    lng: ""
-  })
+  const [location, setLocation] = useState([])
 
   const userState = useContext(UserContext);
   var uid = userState.id;
-const getUser = () => {
-  console.log("mapped:", uid);
-  API.getUserProfile(uid).then((results) => {
-    console.log("results", results);
-    // retrieve destination city
-    var city = results[0].destination;
-    console.log(city);
 
-   // call api to convert the city into lat/long
-    API.getCoordinates(city).then((result) => {
-      console.log("Lat&Lon:", result);
-      // setLocation here
-      setLocation({
-        lat: result.lat, 
-        lng: result.lng
-      })
-    });
-  });
-};
+  // function handleClick () {
+  //   console.log("i have been clicked")
+  // }
+
   return (
-    // Important! Always set the container height explicitly
     <div style={{ height: "100vh", width: "100%" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDhIP2Tps4GjKacpqtpjJ-sI7rBrTcz15c" }}
@@ -74,22 +62,64 @@ const getUser = () => {
         defaultZoom={zoom.zoom}
       >
         {/* location.lat && location.long here */}
+        {location.map((location => {
+          console.log('LOCATION ARRAY: ',location)
+          return (
+            <Marker 
+            lat={location.lat}
+            lng={location.lng}
+            img={location.image}
 
-          <Marker lat={location.lat} lng={location.lng} text={location.text} img={location.image}/>
+            onClick={() => console.log("You clicked me!")}
+            />
+          )
+        }))}
+
+      <button className="button-default" onClick={toggle}>Show Modal</button>
+      <Modal
+        isShowing={isShowing}
+        hide={toggle}
+      />
         
       </GoogleMapReact>
     </div>
   );
 
-  // return (
-  //   <ol>
-  //     {reptiles.map((reptile) => (
-  //       <li>{reptile}</li>
-  //     ))}
-  //   </ol>
-  // );
 
 }
 
 export default Map;
 
+// const markerStyle = {
+//   position: "absolute"
+// };
+
+// function CustomMarker({lat,lng,onMarkerClick}) {
+//   return (
+//     <div onClick={onMarkerClick} lat={lat} lng={lng}>
+//       <img style={markerStyle} src={icon} alt="icon" />
+//     </div>
+//   );
+// }
+
+// function MapExample({ center, zoom, data }) {
+
+//   function handleMarkerClick(){
+//     console.log('Click')
+//   }
+
+
+//   return (
+//     <GoogleMapReact
+//       style={{ height: "100vh", width: "100%" }}
+//       defaultZoom={zoom}
+//       defaultCenter={center}
+//     >
+//       {data.map((item, idx) => {
+//         return <CustomMarker  onMarkerClick={handleMarkerClick} key={idx} lat={item.lat} lng={item.lng} />
+//       })}
+//     </GoogleMapReact>
+//   );
+
+
+ 

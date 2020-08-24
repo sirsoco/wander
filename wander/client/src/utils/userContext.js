@@ -16,6 +16,9 @@ const UserContext = React.createContext({
     hobbies: "hiking",
     setHocbbies: () => null,
     destination: "Dubai",
+    image: "",
+    setImage: () => null,
+
     // setDestination: () => null,
     // onChange: () => undefined
 });

@@ -21,6 +21,7 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: true
     },
+            
     education: {
         type: DataTypes.STRING,
         allowNull: true
@@ -37,7 +38,8 @@ module.exports = function(sequelize, DataTypes) {
     destination: {
         type: DataTypes.STRING,
         allowNull: true
-    },
+    }
+
     
     })
 
