@@ -5,7 +5,9 @@ import Nav from "./components/Nav"
 import Map from "./pages/map.js"
 import Signup from "./pages/signUp.js"
 import UserContext from "./utils/userContext";
-import Register from "./pages/register"
+import Register from "./pages/register";
+import Profile from "./pages/profile"
+
 // ***** ROUTERS ******
 // =============================================================
 function App() {
@@ -56,6 +58,7 @@ return (
         <Route exact path="/" component={Signup} />
         <Route exact path="/map" component={Map} />
         <Route exact path="/register" component={Register} />
+        <Route exact path="/profile" component={Profile} />
       </Switch>
     </UserContext.Provider>
       

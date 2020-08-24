@@ -11,7 +11,7 @@ const router = require('express').Router()
 
 
 // GET route for retriving all user profiles
-router.get("/user/profile", function(req, res) {
+router.get("/users", function(req, res) {
   db.user.findAll({
   })
   .then(function(dbuser){             
@@ -66,7 +66,8 @@ router.post("/user", function (req, res) {
       education: req.body.education,
       currentLocation: req.body.currentLocation,
       hobbies: req.body.hobbies,
-      destination: req.body.destination
+      destination: req.body.destination,
+      photoURL: req.body.photoURL
     },
     {
       where: {

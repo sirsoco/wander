@@ -2,20 +2,14 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from "../utils/userContext";
 import GoogleMapReact from "google-map-react";
 import API from "../utils/api";
-import Modal from "../components/Modal/" ;
-import useModal from "../components/Modal/useModal";
+import PopUp from "../components/Modal/" ;
 
-
-function Map() {
-
-  // var photoURL = localStorage.getItem("photo");
-  // console.log("PHOTO URL: ", photoURL)
-
+// import useModal from "../components/Modal/useModal";
 // pass Marker a photoURL prop to make it dynamic
-  const Marker = (props) => <img src={props.img} width="50" height="50" />;
+const Marker = (props) => <img onClick={()=> props.onClick(props.uid)} src={props.img} width="50" height="50" />;
 
-  const {isShowing, toggle} = useModal();
-
+function Map(props) {
+  const [show, setShow] = useState(false);
   const [center, setCenter] = useState({
     lat: 39.0119,
     lng: 98.4842,
@@ -23,11 +17,25 @@ function Map() {
   const [zoom, setZoom] = useState({
     zoom: 0
   });
-
   const [location, setLocation] = useState([])
-
   const userState = useContext(UserContext);
-  var uid = userState.id;
+  var userid = userState.id;
+  const [match, setMatch] = useState("");
+
+// declare a method that takes in uid
+const renderModal = (uid) => {
+  console.log('VIEWING USER: ', uid)
+  // Update state with the uid of the user we viewing using setMatch
+  // toggle the modal
+  // setShow(true);
+  // setMatch(uid)
+
+  // TODO: Redirect to /profile
+  props.history.push('/profile', { matchId: uid})
+
+}
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
 
   useEffect(() => {
    API.getAllUsers().then(
@@ -38,6 +46,7 @@ function Map() {
           // console.log("USER RESULT: ",result)
             console.log("USER: ", result)
             var photoURL = result.photoURL;
+            var uid = result.uid;
            await API.getCoordinates(city).then((result) => {
              console.log("RESULT: ", result)
             // setLocation here
@@ -49,7 +58,8 @@ function Map() {
           setLocation(oldLocation => [...oldLocation, {
             lat: result.lat, 
             lng: result.lng,
-            photoURL: photoURL
+            photoURL: photoURL,
+            uid: uid
           }])
         });
       },
@@ -63,13 +73,13 @@ function Map() {
   // }
 // console.log("LOCATION: ",location)
   return (
-    <div style={{ height: "100vh", width: "100%" }}>
+     <div style={{ height: "100vh", width: "100%" }}> 
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDhIP2Tps4GjKacpqtpjJ-sI7rBrTcz15c" }}
         defaultCenter={center}
         defaultZoom={zoom.zoom}
       >
-        {/* location.lat && location.long here */}
+       
         {location.map((latlng => {
           // console.log('LOCATION ARRAY: ',location)c
           return (
@@ -77,57 +87,26 @@ function Map() {
             lat={latlng.lat}
             lng={latlng.lng}
             img={latlng.photoURL}
+            uid ={latlng.uid}
 
-            onClick={() => console.log("You clicked me!")}
+            onClick={renderModal}
             />
           )
         }))}
 
-      <button className="button-default" onClick={toggle}>Show Modal</button>
-      <Modal
-        isShowing={isShowing}
-        hide={toggle}
-      />
         
       </GoogleMapReact>
+      {/* <PopUp
+        show={show}
+        matchId={match}
+      /> */}
+    
     </div>
   );
-
-
 }
 
 export default Map;
 
-// const markerStyle = {
-//   position: "absolute"
-// };
-
-// function CustomMarker({lat,lng,onMarkerClick}) {
-//   return (
-//     <div onClick={onMarkerClick} lat={lat} lng={lng}>
-//       <img style={markerStyle} src={icon} alt="icon" />
-//     </div>
-//   );
-// }
-
-// function MapExample({ center, zoom, data }) {
-
-//   function handleMarkerClick(){
-//     console.log('Click')
-//   }
-
-
-//   return (
-//     <GoogleMapReact
-//       style={{ height: "100vh", width: "100%" }}
-//       defaultZoom={zoom}
-//       defaultCenter={center}
-//     >
-//       {data.map((item, idx) => {
-//         return <CustomMarker  onMarkerClick={handleMarkerClick} key={idx} lat={item.lat} lng={item.lng} />
-//       })}
-//     </GoogleMapReact>
-//   );
 
 
  

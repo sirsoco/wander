@@ -6,7 +6,7 @@ import axios from "axios";
 export default {
     // GET all users
     getAllUsers: () =>
-        axios.get("/api/user/profile/")
+        axios.get("/api/users/")
             .then(result => {return result.data}),
 
     // GET specific ser based on uid
