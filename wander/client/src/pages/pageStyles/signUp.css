@@ -1,0 +1,7 @@
+.signUpButton {
+    z-index: 1;
+    background-color: transparent !important;
+    border: 1.5px solid white !important;
+    color: white !important;
+
+}

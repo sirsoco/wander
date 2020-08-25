@@ -1,14 +1,16 @@
 import React, { useContext, useState, useEffect } from "react";
-// import API from "../utils/api";
-// import axios from "axios";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
-// import "/src/components/userForm/style.css";
-// import UserContext from "../utils/userContext";
+
 
 // ***** Profile PAGE ******
 // =============================================================
-const [profile, setProfile] = useState({
+
+
+function Profile
+(props) 
+{
+  const [profile, setProfile] = useState({
     name: "",
     age: "",
     career: "",
@@ -18,8 +20,7 @@ const [profile, setProfile] = useState({
     destination: "",
     photoURL: ""
   })
-
-function Profile(props) {
+  
   console.log("PROFILE PROPS: ", props)
   const { matchId } = props.location.state
   useEffect(() => {

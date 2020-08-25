@@ -1,21 +1,13 @@
 import React, {useContext, useState} from "react";
-// import API from "../utils/api";
-// import axios from "axios";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
-// import "/src/components/userForm/style.css";
-// import UserContext from "../utils/userContext";
-
+import Nav from '../components/Nav'
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
 // ***** Register PAGE ******
 // =============================================================
-// const [username, setUsername] = useState();
-// const [password, setPassword] = useState();
 
 function Register(props) { 
 
-
-
-const [uid, setUid] = useState();
  const [name, setName] = useState();
  const [age, setAge] = useState();
  const [career, setCareer] = useState();
@@ -25,50 +17,14 @@ const [uid, setUid] = useState();
  const [destination, setDestination] = useState();
  
  
-   //setName, setAge, setCareer, setEducation, setCurrentLocation,setHobbies,setDestination]= useState({
-//   id: "",
-//   name: "",
-//   age: "",
-//   career: "",
-//   education: "",
-//   currentLocation: "",
-//   hobbies: "",
-//   destination: "",
-// })
-  
-//console.log(user)
-
-
-// UID:lTSccHESTFNHdTSxR4itDHMwpt03
-
-  // CONNECT TO THE GLOBAL USER OBJECT
-  const userState = useContext(UserContext);
-
-
-  // userState.setName('andrew');
-  // userState.setAge(45);
-  // userState.setCareer('webDev');
-  // userState.setEducation('andrew');
-  // userState.setCurrentLocation('andrew');
-  // userState.setHobbies('andrew');
-  // console.log(userState)
-
-  // const handleFormSubmit = e => {
-  //   e.preventDeafault();
-  //   API.updateProfile(userState)
-  // }
+const userState = useContext(UserContext);
 
 const handleFormSubmit = e => {
   e.preventDefault();
   console.log("USER STATE: ",userState)
 
 
-  // console.log('USER STATE: ', userState);
-  
-  // const handleFormSubmit = e => {
-  //   e.preventDefault();
-  //   console.log(name)
-  //   console.log(userState.id)
+
   var config =
     { 
       name: name,
@@ -86,140 +42,119 @@ const handleFormSubmit = e => {
   props.history.push("/map")
    }
     
+return ( 
+  <>
+  <Nav></Nav>
+   <form>
+    <p className="h4 text-center py-4">Sign up</p>
+    <div className="grey-text">
+      <MDBInput
+        label="Name"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={name}
+        placeholder="What's your name?"
+        onChange = { e => setName(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="Age"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={age}
+        placeholder="How old are you?"
+        onChange = { e => setAge(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="Career"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={career}
+        placeholder="What do you do for a living?"
+        onChange = { e => setCareer(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="Education"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={education}
+        placeholder="What is your highest level of education?"
+        onChange = { e => setEducation(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="Hobbies"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={hobbies}
+        placeholder="What do you do for fun?"
+        onChange = { e => setHobbies(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="currentLocation"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={currentLocation}
+        placeholder="What city are you from?"
+        onChange = { e => setCurrentLocation(e.target.value)}
+        required
+      />
+      <MDBInput
+        label="Destination"
+        icon="user"
+        group
+        type="text"
+        validate
+        error="wrong"
+        success="right"
+        value={destination}
+        placeholder="Where would you like to travel to?"
+        onChange = { e => setDestination(e.target.value)}
+        required
+      />
+    </div>
+    <div className="text-center py-4 mt-3">
+      <MDBBtn color="cyan" type="submit">
+        Register
+      </MDBBtn>
+    </div>
+  </form>
+// </MDBCardBody>
+// </MDBCard>
+// </MDBCol>
+// </MDBRow>
+// </MDBContainer>
 
-console.log("UID: ", userState.id)
-  // const handleInputChange = event => {
-  //   e.preventDefault();
-    // setName(event.target.value);
-    // setAge(event.target.value);
-    // setCareer(event.target.value);
-    // setEducation(event.target.value);
-    // setCurrentLocation(event.target.value);
-    // setHobbies(event.target.value);
-  // };
-
-
-  return ( 
-    <form onSubmit={handleFormSubmit} className="form-group">
-      <div className="Border">
-      <div>
-          <label for="name">Uid</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={userState.id}
-            placeholder="What's your name?"
-            required
-          />
-        </div>
-        <div>
-          <label for="name">Name</label>
-          <input
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={name}
-            placeholder="What's your name?"
-            onChange = { e => setName(e.target.value)}
-            
-            required
-          />
-        </div>
-        <div>
-          <label for="age">Age</label>
-          <input
-            type="number"
-            className="form-control"
-            id="age"
-            name="age"
-            value={age}
-            placeholder="Age"
-            onChange = { e => setAge(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label for="careerInput">Career</label>
-          <input
-            type="text"
-            class="form-control"
-            id="careerInput"
-            name="career"
-            value={career}
-            placeholder="Career"
-            onChange = { e => setCareer(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label for="educationInput">Education</label>
-          <input
-            type="text"
-            class="form-control"
-            id="educationInput"
-            name="education"
-            value={education}
-            id="locationInput"
-            name="currentLocation"
-            value={currentLocation}
-            placeholder="Current Location"
-            onChange = { e => setEducation(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label for="adventureInput">Hobbies</label>
-          <input
-            type="text"
-            class="form-control"
-            id="adventureInput"
-            name="hobbies"
-            value={hobbies}
-            placeholder="Adventure Type"
-            onChange = { e => setHobbies(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label for="adventureInput">Current Location</label>
-          <input
-            type="text"
-            class="form-control"
-            id="currentLocation"
-            name="currentLocation"
-            value={hobbies}
-            placeholder="Adventure Type"
-            onChange = { e => setCurrentLocation(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label for="destinationInput">Destination</label>
-          <input
-            type="text"
-            class="form-control"
-            id="destinationInput"
-            name="destination"
-            value={destination}
-            placeholder="Destination"
-            onChange = { e => setDestination(e.target.value)}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="btn btn-primary"
-          onClick={handleFormSubmit}
-        >
-          Submit
-        </button>
-      </div>
-    </form>
-  );
   
+  
+)
 }
 export default Register
 
