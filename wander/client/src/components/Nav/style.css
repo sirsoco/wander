@@ -11,9 +11,9 @@
     padding: 20px;
 }
 h1{
-    color: black;
     font-family: linotype-didot,serif;
     font-weight: 700;
     font-style: normal;
     font-size: 4rem;
+    color:black
 }

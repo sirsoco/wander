@@ -2,7 +2,7 @@ import React, {useContext, useState} from "react";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
 import Nav from '../components/Nav'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput,MDBCard, MDBCardBody } from 'mdbreact';
 // ***** Register PAGE ******
 // =============================================================
 
@@ -45,6 +45,11 @@ const handleFormSubmit = e => {
 return ( 
   <>
   <Nav></Nav>
+  <MDBContainer>
+      <MDBRow>
+        <MDBCol md="6">
+          <MDBCard>
+            <MDBCardBody>
    <form>
     <p className="h4 text-center py-4">Sign up</p>
     <div className="grey-text">
@@ -141,16 +146,18 @@ return (
       />
     </div>
     <div className="text-center py-4 mt-3">
-      <MDBBtn color="cyan" type="submit">
+      <MDBBtn onClick={handleFormSubmit} color="cyan" type="submit">
         Register
       </MDBBtn>
     </div>
   </form>
-// </MDBCardBody>
-// </MDBCard>
-// </MDBCol>
-// </MDBRow>
-// </MDBContainer>
+  </MDBCardBody>
+          </MDBCard>
+        </MDBCol>
+      </MDBRow>
+    </MDBContainer>
+</>
+
 
   
   

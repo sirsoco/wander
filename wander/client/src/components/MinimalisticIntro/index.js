@@ -34,9 +34,7 @@ class MinimalisticIntro extends React.Component {
 
   
 
-  componentWillUnmount() {
-    document.querySelector('nav').style.height = 'auto';
-  }
+ 
 
   render() {
     const { collapsed } = this.state;
@@ -75,11 +73,11 @@ class MinimalisticIntro extends React.Component {
                 <h1 className='h1-reponsive  text-uppercase'>
                   Wandr
                 </h1>
-                <a class="btn btn-outline-white wow fadeInDown data-wow-delay=0.4s">portfolio</a>
 
               </MDBCol>
             </MDBRow>
           </MDBContainer>
+          
         </MDBView>
       </div>
     );

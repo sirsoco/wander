@@ -5,7 +5,7 @@ import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, 
 const CardExample = () => {
     
   return (
-    <MDBRow>
+    <MDBRow style =>
       <MDBCol col='4'>
         <MDBCard narrow>
           <MDBCardImage

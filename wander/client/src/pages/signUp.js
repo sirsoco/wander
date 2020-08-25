@@ -53,12 +53,12 @@ function Signup(props) {
     } else {
       return (
         <div>
+          
           <MinimalisticIntro>
-<a className="" onClick = {console.log("hello")}></a>
+
           </MinimalisticIntro>
         
-        
-           <Button onClick={signUp} variant="primary" size="lg" block>
+        <Button onClick={signUp} variant="primary" size="lg" block>
         Sign-Up With Google
           </Button>
         </div>

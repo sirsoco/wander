@@ -1,7 +1,11 @@
-.signUpButton {
-    z-index: 1;
-    background-color: transparent !important;
-    border: 1.5px solid white !important;
-    color: white !important;
-
-}
+.btn-block
+{margin-top:-60%;
+margin-left:24%;
+background-color: Transparent;
+background-repeat:no-repeat;
+border-color: whitesmoke;
+width: 50%;
+cursor:pointer;
+overflow: hidden;
+padding: 0;
+};
