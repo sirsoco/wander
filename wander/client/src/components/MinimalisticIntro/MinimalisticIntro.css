@@ -1,4 +1,12 @@
-.header{
+* {
+    z-index: 2;
+}
+#minimalistintro .view {
+    min-height: 100vh !important;
+    height: unset !important;
+  }
+
+  .header{
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #f9f9f9;
@@ -12,8 +20,13 @@
 }
 h1{
     font-family: linotype-didot,serif;
-    font-weight: 700;
+    font-weight: 320;
     font-style: normal;
-    font-size: 4rem;
-    color:black
+    font-size: 5rem;
+    color: white;
+    opacity: 80%;
+    letter-spacing: 1rem;
+    padding-top:20%;
+
+
 }

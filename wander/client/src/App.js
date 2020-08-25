@@ -44,16 +44,12 @@ function App() {
     setDestination: (destination) => {
       setUserState({...user, destination})
     }
-    // onChange: (name, age, career, education, currentLocation, hobbies, destination) => {
-    //   setUserState({...user, name, age, career, education, currentLocation, hobbies, destination })
-    // }
+ 
   });
 return (
   <Router >
     <UserContext.Provider value={user} >
-      <div>
-      <Nav/>
-      </div>
+      
       <Switch>
         <Route exact path="/" component={Signup} />
         <Route exact path="/map" component={Map} />

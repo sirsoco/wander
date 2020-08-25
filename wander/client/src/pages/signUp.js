@@ -3,6 +3,8 @@ import firebase from '../config.js';
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import UserContext from "../utils/userContext";
+import MinimalisticIntro from "../components/MinimalisticIntro"
+import './pageStyles/signUp.css';
 
 // ***** LOGIN PAGE ******
 // =============================================================
@@ -12,6 +14,7 @@ function Signup(props) {
   // CONNECT TO THE GLOBAL USER OBJECT to set the user's unique ID from firebase
   const userState = useContext(UserContext);
   const [isLoading, setIsLoading] = useState(true);
+  
   const signUp = () => {
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
@@ -49,9 +52,16 @@ function Signup(props) {
       )
     } else {
       return (
+        <div>
+          
+          <MinimalisticIntro>
+
+          </MinimalisticIntro>
+        
         <Button onClick={signUp} variant="primary" size="lg" block>
         Sign-Up With Google
-        </Button>
+          </Button>
+        </div>
       )
     }
 

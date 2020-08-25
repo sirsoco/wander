@@ -1,38 +1,30 @@
 import React, { useContext, useState, useEffect } from "react";
-// import API from "../utils/api";
-// import axios from "axios";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
-import {
-  Card,
-  CardBlock,
-  CardFooter,
-  CardTitle,
-  CardText,
-} from 'react-bootstrap-card';
-import {
-  Col,
-  Row,
-} from 'react-bootstrap';
-// import "/src/components/userForm/style.css";
-// import UserContext from "../utils/userContext";
+import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon } from "mdbreact";
+import './pageStyles/profile.css'
+import Nav from "../components/Nav"
+
+
 
 // ***** Profile PAGE ******
 // =============================================================
 
-function Profile(props) {
-    const [profile, setProfile] = useState({
-        name: "",
-        age: "",
-        career: "",
-        education: "",
-        currentLocation: "",
-        hobbies: "",
-        destination: "",
-        photoURL: ""
-      })
 
-
+function Profile
+(props) 
+{
+  const [profile, setProfile] = useState({
+    name: "",
+    age: "",
+    career: "",
+    education: "",
+    currentLocation: "",
+    hobbies: "",
+    destination: "",
+    photoURL: ""
+  })
+  
   console.log("PROFILE PROPS: ", props)
   const { matchId } = props.location.state
   useEffect(() => {
@@ -50,43 +42,42 @@ function Profile(props) {
             destination: response[0].destination,
             photoURL: response[0].photoURL
           })
-          console.log("name: ",response[0].name)
         })
     }
   }, [matchId]);
 
-  return (
-    <Card>
-      <CardBlock>
-        <CardTitle>
-        {profile.name}
-            </CardTitle>
-            <p> 
-            {profile.age}
-            </p>
-            <p>
-            {profile.career}
-            </p>
-            <p>
-            {profile.education}
-            </p>
-            <p>
-            {profile.currentLocation}
-            </p>
-            <p>
-            {profile.hobbies}
-            </p>
-            <p>
-            {profile.destination}
-            </p>
-            <img src={profile.photoURL} />   
-        </CardBlock>
-        <CardFooter className="text-xs-center">
-            Some Footer
-        </CardFooter>
-    </Card>
-  );
-};
 
+return(
+  
+  <div>
+    <Nav></Nav>
+     <MDBCard className="my-5 px-5 pb-5 text-center">
+      <MDBCardBody>
+          <h1 className="h1-responsive font-weight-bold my-5">
+            {profile.name}
+          </h1>
+          <img
+                tag="img"
+                src={profile.photoURL}
+                className="rounded-circle z-depth-1 img-fluid"
+                alt="Sample avatar"
+              />
+          <p className="grey-text w-responsive mx-auto mb-5 justify-center">
+            <h3>Welocome to my profile! Let's go an adventure ☺︎ </h3>
+          </p>
+          <MDBRow>
+            <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
+              
+              <p className="text-  blue-text"><h2>Education: {profile.career}</h2></p>
+              <p className="text-blue-text"><h2>Location: {profile.currentLocation}</h2></p>
+<p className=" blue-text"><h2>Destination: {profile.destination}</h2></p>
+            </MDBCol>
+            </MDBRow>
+      </MDBCardBody>
+  </MDBCard> </div>
+
+)
+
+}
 export default Profile
 
