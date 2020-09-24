@@ -16,3 +16,10 @@
   .App-link {
     color: #61dafb;
   }
+
+  .Background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg')
+  }
