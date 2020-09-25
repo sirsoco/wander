@@ -48,7 +48,7 @@ const handleShow = () => setShow(true);
             console.log("USER: ", result)
             var photoURL = result.photoURL;
             var uid = result.uid;
-           await API.getCoordinates(city).then((result) => {
+          API.getCoordinates(city).then((result) => {
              console.log("RESULT: ", result)
             // setLocation here
               console.log("LOCATION: ", location); 
