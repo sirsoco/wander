@@ -63,7 +63,7 @@ return(
                 alt="Sample avatar"
               />
           <p className="grey-text w-responsive mx-auto mb-5 justify-center">
-            <h3>Welocome to my profile! Let's go an adventure ☺︎ </h3>
+            <h3>Welcome to my profile! Let's go an adventure ☺︎ </h3>
           </p>
           <MDBRow>
             <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
