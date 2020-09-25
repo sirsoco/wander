@@ -57,7 +57,7 @@ function Signup(props) {
           <Login>
 
           </Login>
-        
+         
         <Button onClick={signUp} variant="primary" size="lg" block>
         Sign-Up With Google
           </Button>

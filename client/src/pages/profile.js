@@ -67,10 +67,11 @@ return(
           </p>
           <MDBRow>
             <MDBCol lg="3" md="6" className="mb-lg-0 mb-5">
-              
-              <p className="text-  blue-text"><h2>Education: {profile.career}</h2></p>
+              <p className="text-  blue-text"><h2>Education: {profile.education}</h2></p>
+              <p className="text-  blue-text"><h2>Career: {profile.career}</h2></p>
               <p className="text-blue-text"><h2>Location: {profile.currentLocation}</h2></p>
-<p className=" blue-text"><h2>Destination: {profile.destination}</h2></p>
+              <p className=" blue-text"><h2>Destination: {profile.destination}</h2></p>
+              <p className="text-blue-text"><h2>Hobbies: {profile.hobbies}</h2></p>
             </MDBCol>
             </MDBRow>
       </MDBCardBody>
