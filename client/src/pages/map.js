@@ -10,9 +10,10 @@ const Marker = (props) => <img onClick={()=> props.onClick(props.uid)} src={prop
 
 function Map(props) {
   const [show, setShow] = useState(false);
+  // lat and long here are set to center of Kazakhstan
   const [center, setCenter] = useState({
-    lat: 39.0119,
-    lng: 98.4842,
+    lat: 48.939939,
+    lng: 77.908785,
   });
   const [zoom, setZoom] = useState({
     zoom: 0
