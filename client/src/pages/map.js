@@ -19,6 +19,38 @@ function Map(props) {
     zoom: 0
   });
   const [location, setLocation] = useState([])
+  
+  const fetchPins = async () => {
+  
+  API.getAllUsers().then(
+    (result) => {      
+        result.map( result => {
+        var city = result.destination;
+        // console.log("CITY: ",city);
+        // console.log("USER RESULT: ",result)
+          console.log("USER: ", result)
+          var photoURL = result.photoURL;
+          var uid = result.uid;
+        API.getCoordinates(city).then((result) => {
+           console.log("RESULT: ", result)
+          // setLocation here
+            //console.log("LOCATION: ", location); 
+          // setLocation([...location, {
+          //   lat: result.lat, 
+          //   lng: result.lng
+          // }])
+        setLocation(oldLocation => [...oldLocation, {
+          lat: result.lat, 
+          lng: result.lng,
+          photoURL: photoURL,
+          uid: uid
+        }])
+      });
+    },
+  )}
+)
+
+}
   const userState = useContext(UserContext);
   var userid = userState.id;
   const [match, setMatch] = useState("");
@@ -39,36 +71,13 @@ const handleClose = () => setShow(false);
 const handleShow = () => setShow(true);
 
   useEffect(() => {
-   API.getAllUsers().then(
-      (result) => {      
-          result.map( result => {
-          var city = result.destination;
-          // console.log("CITY: ",city);
-          // console.log("USER RESULT: ",result)
-            console.log("USER: ", result)
-            var photoURL = result.photoURL;
-            var uid = result.uid;
-          API.getCoordinates(city).then((result) => {
-             console.log("RESULT: ", result)
-            // setLocation here
-              console.log("LOCATION: ", location); 
-            // setLocation([...location, {
-            //   lat: result.lat, 
-            //   lng: result.lng
-            // }])
-          setLocation(oldLocation => [...oldLocation, {
-            lat: result.lat, 
-            lng: result.lng,
-            photoURL: photoURL,
-            uid: uid
-          }])
-        });
-      },
-    )}
-  )}, []);
+    fetchPins();
+  }, []);
 
 
-
+  if (!location || location.length === 0) {
+    return null;
+  }
   // function handleClick () {
   //   console.log("i have been clicked")
   // }

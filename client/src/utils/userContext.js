@@ -14,7 +14,7 @@ const UserContext = React.createContext({
     currentLocation: "London",
     setCurrentLocation: () => null,
     hobbies: "hiking",
-    setHocbbies: () => null,
+    setHobbies: () => null,
     destination: "Dubai",
     image: "",
     setImage: () => null,
