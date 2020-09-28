@@ -41,7 +41,7 @@ const handleShow = () => setShow(true);
   useEffect(() => {
    API.getAllUsers().then(
       (result) => {      
-          result.map(async result => {
+          result.map( result => {
           var city = result.destination;
           // console.log("CITY: ",city);
           // console.log("USER RESULT: ",result)
