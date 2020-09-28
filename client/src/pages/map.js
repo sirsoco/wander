@@ -82,7 +82,8 @@ const handleShow = () => setShow(true);
       >
        
         {location.map((latlng => {
-          // console.log('LOCATION ARRAY: ',location)c
+          console.log('LOCATION ARRAY: ',latlng);
+
           return (
             <Marker 
             lat={latlng.lat}
