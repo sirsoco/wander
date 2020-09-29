@@ -176,10 +176,6 @@ return (
       </MDBRow>
     </MDBContainer>
 </>
-
-
-  
-  
 )
 }
 export default Register
