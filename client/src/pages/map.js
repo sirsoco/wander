@@ -28,9 +28,9 @@ function Map(props) {
         var city = result.destination;
         // console.log("CITY: ",city);
         // console.log("USER RESULT: ",result)
-          console.log("USER: ", result)
-          var photoURL = result.photoURL;
-          var uid = result.uid;
+          // console.log("USER: ", result)
+          // var photoURL = result.photoURL;
+          // var uid = result.uid;
         API.getCoordinates(city).then((result) => {
            console.log("RESULT: ", result)
           // setLocation here
@@ -39,12 +39,13 @@ function Map(props) {
           //   lat: result.lat, 
           //   lng: result.lng
           // }])
-        setLocation(oldLocation => [...oldLocation, {
+          //oldLocation => [...oldLocation, 
+        setLocation({
           lat: result.lat, 
           lng: result.lng,
-          photoURL: photoURL,
-          uid: uid
-        }])
+          photoURL: result.photoURL,
+          uid: result.uid
+        })
       });
     },
   )}

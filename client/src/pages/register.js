@@ -29,15 +29,15 @@ const handleFormSubmit = e => {
     { 
       name: name,
       age: age,
-        career: career,
-         education: education,
-         currentLocation: currentLocation,
-         hobbies: hobbies,
-         destination
+      career: career,
+      education: education,
+      currentLocation: currentLocation,
+      hobbies: hobbies,
+      destination
        }
        var uid= userState.id
-  console.log("CONFIG: ",config)
-   var uid = userState.id
+      console.log("CONFIG: ",config)
+      var uid = userState.id
   API.updateProfile(uid,config);
   props.history.push("/map")
    }
