@@ -5,6 +5,10 @@ import Nav from '../components/Nav'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput,MDBCard, MDBCardBody } from 'mdbreact';
 
 function Register(props) { 
+  
+  //global state  
+  const userState = useContext(UserContext);
+
   // defining config for db 
   var config ={ 
     uid: userState.id,
@@ -19,6 +23,7 @@ function Register(props) {
     lang: lang
   };
 
+  
   // local states
   const [name, setName] = useState();
   const [age, setAge] = useState();
@@ -29,10 +34,7 @@ function Register(props) {
   const [destination, setDestination] = useState();
   const [lat, setLat] = useState();
   const [lang, setLang] = useState();
-
-  //global state
-  const userState = useContext(UserContext);
-
+  
   //async func to transform coord.
   const MapCoordinates = async () => {
     API.getCoordinates(config.destination).then( (result) => {
