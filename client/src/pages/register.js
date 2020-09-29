@@ -34,20 +34,19 @@ function Register(props) {
   const [destination, setDestination] = useState();
   const [lat, setLat] = useState();
   const [lang, setLang] = useState();
-  
   //async func to transform coord.
-  const MapCoordinates = async () => {
-    API.getCoordinates(config.destination).then( (result) => {
+  const MapCoordinates = async (city) => {
+    API.getCoordinates(city).then( (result) => {
     setLat(result.lat);
     setLang(result.lang);
     });
   };
   
   //async function to complete profile  
-  const submitProfile = async () => {
+  const submitProfile = async (city) => {
   
     // wait for coordinates to get set
-    await MapCoordinates() 
+    await MapCoordinates(city) 
 
     //updating our db with user inputs
     //then mapping to map page 
@@ -58,7 +57,8 @@ function Register(props) {
 
 const handleFormSubmit = async (e) => {
   e.preventDefault();
-  submitProfile()
+  var city = config.destination
+  submitProfile(city)
 };
    
 return ( 
