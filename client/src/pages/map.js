@@ -25,7 +25,7 @@ function Map(props) {
   const userState = useContext(UserContext);
   var userid = userState.id;
 
-  const [match, setMatch] = useState("");
+  
 
   //set state for user marker 
   const fetchPins = async () => {
