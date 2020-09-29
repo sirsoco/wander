@@ -33,7 +33,7 @@ const handleFormSubmit = e => {
       education: education,
       currentLocation: currentLocation,
       hobbies: hobbies,
-      destination
+      destination: destination
        }
        var uid= userState.id
       console.log("CONFIG: ",config)
