@@ -15,14 +15,14 @@ export default {
             .then((result) => {return result.data}),
 
     // UPDATE a profile based on uid
-    updateProfile:(uid,config) =>
-         axios.put(`/api/user/profile/${uid}`, config )
+    updateProfile:(config) =>
+         axios.put(`/api/user/profile/${config.uid}`, config )
             .then((result) => {return result.data} ),
     
     // GET longitude and latitude of user 
      getCoordinates: (city) =>
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyAr_EInIV-7qOdr0CuSsEdrHt7WPHI_zAY`)
-             .then( (results) => { return results.data.results[0].geometry.location })
+             .then( (results) => { return  results.data.results[0].geometry.location.lat })
 }
 
 

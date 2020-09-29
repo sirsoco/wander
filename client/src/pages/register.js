@@ -1,47 +1,64 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useState} from 'react';
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
 import Nav from '../components/Nav'
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBInput,MDBCard, MDBCardBody } from 'mdbreact';
-// ***** Register PAGE ******
-// =============================================================
 
 function Register(props) { 
+  // defining config for db 
+  var config ={ 
+    uid: userState.id,
+    name: name,
+    age: age,
+    career: career,
+    education: education,
+    currentLocation: currentLocation,
+    hobbies: hobbies,
+    destination: destination,
+    lat: lat,
+    lang: lang
+  };
 
- const [name, setName] = useState();
- const [age, setAge] = useState();
- const [career, setCareer] = useState();
- const [education, setEducation] = useState();
- const [currentLocation, setCurrentLocation] = useState()
- const [hobbies, setHobbies] = useState();
- const [destination, setDestination] = useState();
- 
- 
-const userState = useContext(UserContext);
+  // local states
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+  const [career, setCareer] = useState();
+  const [education, setEducation] = useState();
+  const [currentLocation, setCurrentLocation] = useState()
+  const [hobbies, setHobbies] = useState();
+  const [destination, setDestination] = useState();
+  const [lat, setLat] = useState();
+  const [lang, setLang] = useState();
 
-const handleFormSubmit = e => {
+  //global state
+  const userState = useContext(UserContext);
+
+  //async func to transform coord.
+  const MapCoordinates = async () => {
+    API.getCoordinates(config.destination).then( (result) => {
+    setLat(result.lat);
+    setLang(result.lang);
+    });
+  };
+  
+  //async function to complete profile  
+  const submitProfile = async () => {
+  
+    // wait for coordinates to get set
+    await MapCoordinates() 
+
+    //updating our db with user inputs
+    //then mapping to map page 
+    API.updateProfile(config).then(() => {
+      props.history.push("/map")
+    });
+  };
+
+const handleFormSubmit = async (e) => {
   e.preventDefault();
-  console.log("USER STATE: ",userState)
-
-
-
-  var config =
-    { 
-      name: name,
-      age: age,
-      career: career,
-      education: education,
-      currentLocation: currentLocation,
-      hobbies: hobbies,
-      destination: destination
-       }
-       var uid= userState.id
-      console.log("CONFIG: ",config)
-      var uid = userState.id
-  API.updateProfile(uid,config);
-  props.history.push("/map")
-   }
-    
+  submitProfile()
+};
+   
 return ( 
   <>
   <Nav></Nav>
