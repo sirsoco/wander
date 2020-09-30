@@ -9,8 +9,19 @@ function Register(props) {
   //global state  
   const userState = useContext(UserContext);
 
+  // local states
+  const [name, setName] = useState();
+  const [age, setAge] = useState();
+  const [career, setCareer] = useState();
+  const [education, setEducation] = useState();
+  const [currentLocation, setCurrentLocation] = useState()
+  const [hobbies, setHobbies] = useState();
+  const [destination, setDestination] = useState();
+  const [lat, setLat] = useState();
+  const [lang, setLang] = useState();
+
   // defining config for db 
-  var config ={ 
+  var config = { 
     uid: userState.id,
     name: name,
     age: age,
@@ -23,17 +34,6 @@ function Register(props) {
     lang: lang
   };
 
-  
-  // local states
-  const [name, setName] = useState();
-  const [age, setAge] = useState();
-  const [career, setCareer] = useState();
-  const [education, setEducation] = useState();
-  const [currentLocation, setCurrentLocation] = useState()
-  const [hobbies, setHobbies] = useState();
-  const [destination, setDestination] = useState();
-  const [lat, setLat] = useState();
-  const [lang, setLang] = useState();
   //async func to transform coord.
   const MapCoordinates = async (city) => {
     API.getCoordinates(city).then( (result) => {
