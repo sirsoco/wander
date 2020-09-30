@@ -22,7 +22,7 @@ export default {
     // GET longitude and latitude of user 
      getCoordinates: (city) =>
         axios.get(`https://maps.googleapis.com/maps/api/geocode/json?address=${city}&key=AIzaSyAr_EInIV-7qOdr0CuSsEdrHt7WPHI_zAY`)
-             .then( (results) => { return  results.data.results[0].geometry.location.lat })
+             .then( (results) => { return  results.data.results[0].geometry.location })
 }
 
 

@@ -44,11 +44,11 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
     },
     lat:{
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: true
     },
-    lang:{
-        type: DataTypes.STRING,
+    lng:{
+        type: DataTypes.INTEGER,
         allowNull: true
     }
 

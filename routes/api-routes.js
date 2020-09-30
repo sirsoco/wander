@@ -67,12 +67,14 @@ router.post("/user", function (req, res) {
       currentLocation: req.body.currentLocation,
       hobbies: req.body.hobbies,
       destination: req.body.destination,
-      photoURL: req.body.photoURL
+      photoURL: req.body.photoURL,
+      lat: req.body.lat,
+      lng: req.body.lng
     },
     {
       where: {
         uid: req.params.uid
-      }
+      }      
     })
     .then(function(dbuser) {
       res.json(dbuser);

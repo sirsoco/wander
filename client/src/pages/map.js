@@ -13,7 +13,7 @@ function Map(props) {
  
   const [center, setCenter] = useState({
     lat: 48.939939,
-    lng: 77.908785,
+    long: 77.908785,
   });
   const [zoom, setZoom] = useState({
     zoom: 0
@@ -32,12 +32,12 @@ function Map(props) {
     API.getAllUsers().then(
       (result) => {      
         result.map( result => {
-          setLocation({
+          setLocation(oldLocation => [...oldLocation, {
             lat: result.lat, 
-            lng: result.lng,
+            lng: result.long,
             photoURL: result.photoURL,
             uid: result.uid
-          });
+          }])
         });
       });
     };

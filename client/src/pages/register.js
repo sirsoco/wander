@@ -18,7 +18,7 @@ function Register(props) {
   const [hobbies, setHobbies] = useState();
   const [destination, setDestination] = useState();
   const [lat, setLat] = useState();
-  const [lang, setLang] = useState();
+  const [lng, setLng] = useState();
 
   // defining config for db 
   var config = { 
@@ -31,14 +31,20 @@ function Register(props) {
     hobbies: hobbies,
     destination: destination,
     lat: lat,
-    lang: lang
+    lng: lng
   };
 
   //async func to transform coord.
   const MapCoordinates = async (city) => {
-    API.getCoordinates(city).then( (result) => {
-    setLat(result.lat);
-    setLang(result.lang);
+      API.getCoordinates(city).then( (latlng) => {
+      console.log('latlng:', latlng)
+      console.log('config1:', config);
+    
+      config.lat = latlng.lat;
+      config.lng = latlng.lng
+      API.updateProfile(config)
+      console.log('config2:', config);
+      API.updateProfile(config).then()
     });
   };
   
@@ -46,18 +52,21 @@ function Register(props) {
   const submitProfile = async (city) => {
   
     // wait for coordinates to get set
-    await MapCoordinates(city) 
+   MapCoordinates(city) 
+   
+
 
     //updating our db with user inputs
     //then mapping to map page 
-    API.updateProfile(config).then(() => {
-      props.history.push("/map")
-    });
+    //  API.updateProfile(config).then(() => {
+    // //   props.history.push("/map")
+    //  });
   };
 
 const handleFormSubmit = async (e) => {
   e.preventDefault();
   var city = config.destination
+  console.log('city:', city)
   submitProfile(city)
 };
    
