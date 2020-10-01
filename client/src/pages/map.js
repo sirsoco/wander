@@ -34,7 +34,7 @@ function Map(props) {
         result.map( result => {
           setLocation(oldLocation => [...oldLocation, {
             lat: result.lat, 
-            lng: result.long,
+            lng: result.lng,
             photoURL: result.photoURL,
             uid: result.uid
           }])

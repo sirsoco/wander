@@ -44,7 +44,10 @@ function Register(props) {
       config.lng = latlng.lng
       API.updateProfile(config)
       console.log('config2:', config);
-      API.updateProfile(config).then()
+      API.updateProfile(config).then(
+         //then mapping to map page 
+        props.history.push("/map")
+      )
     });
   };
   
