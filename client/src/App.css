@@ -23,3 +23,11 @@
     position: fixed;
     background-image: url('https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg')
   }
+
+  .profilePic{
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+  }

@@ -46,7 +46,7 @@ function Register(props) {
       console.log('config2:', config);
       API.updateProfile(config).then(
          //then mapping to map page 
-        props.history.push("/map")
+        //props.history.push("/map")
       )
     });
   };
