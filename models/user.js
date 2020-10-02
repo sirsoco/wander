@@ -44,11 +44,12 @@ module.exports = function(sequelize, DataTypes) {
         allowNull: true
     },
     lat:{
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(10,4),
         allowNull: true
+        
     },
     lng:{
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(10,4),
         allowNull: true
     }
 
