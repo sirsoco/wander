@@ -42,6 +42,15 @@ module.exports = function(sequelize, DataTypes) {
     photoURL: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    lat:{
+        type: DataTypes.DECIMAL(10,4),
+        allowNull: true
+        
+    },
+    lng:{
+        type: DataTypes.DECIMAL(10,4),
+        allowNull: true
     }
 
 
