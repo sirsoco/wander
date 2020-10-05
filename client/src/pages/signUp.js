@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import UserContext from "../utils/userContext";
 import Login from "../components/Login/Login.js"
-import './pageStyles/signUp.css';
+
 
 // ***** LOGIN PAGE ******
 // =============================================================
