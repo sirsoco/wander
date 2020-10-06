@@ -1,37 +1,39 @@
-import React, { useContext, useState, useEffect } from "react";
-import UserContext from "../utils/userContext";
+import React, {useState, useEffect } from "react";
+
 import GoogleMapReact from "google-map-react";
 import API from "../utils/api";
-import Marker from "../components/Marker/Marker.js";
+
 import styled from "styled-components";
 
-function Map(props) {
-  const [show, setShow] = useState(false);
+import Marker from "../components/Marker/Marker.js";
+
+const Wrapper = styled.main`
+  width: 100%;
+  height: 100%;
+`;
+
+ function Map(props) {
+  const [location, setLocation] = useState([]);
+  
   // lat and long here are set to  center of Kazakhstan
   const [center, setCenter] = useState({
     lat: 48.939939,
     lng: 77.908785,
   });
-  const [zoom, setZoom] = useState({
-    zoom: 0,
-  });
-
-  const [location, setLocation] = useState([]);
-  useEffect(() => {
-    fetchPins();
-  }, []);
+  
 
   const fetchPins = async () => {
 
-    const getUsers = API.getAllUsers().then((response) => {
+    const getUsers =  API.getAllUsers().then((response) => {
+      console.log('hello')
       setLocation(response);
     });
   };
 
-  const userState = useContext(UserContext);
-  var userid = userState.id;
+useEffect(() => {
+  fetchPins();
+}, [])
 
-  const [match, setMatch] = useState("");
 
   //push uid to redirect profile clicked
   const renderModal = (uid) => {
@@ -40,7 +42,8 @@ function Map(props) {
 
   if (!location || location.length === 0) {
     console.log("Hello");
-    return null;
+   // window.location.reload(false);
+    return null
   }
 
   return (
@@ -48,22 +51,20 @@ function Map(props) {
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDhIP2Tps4GjKacpqtpjJ-sI7rBrTcz15c" }}
         defaultCenter={center}
-        defaultZoom={zoom.zoom}
+        defaultZoom={0}
       >
-        {location.map((latlng) => {
-      
-          return (
+        { location.map((latlng) => (
             <Marker
+              key={location.id}
               lat={latlng.lat}
               lng={latlng.lng}
               img={latlng.photoURL}
               uid={latlng.uid}
               onClick={renderModal}
             />
-          );
-        })}
+        ))}
       </GoogleMapReact>
-    </div>
-  );
+</div>
+  )
 }
 export default Map;
