@@ -2,7 +2,6 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from '../utils/userContext'
 import API from '../utils/api'
 import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon } from "mdbreact";
-import './pageStyles/profile.css'
 import Nav from "../components/Nav"
 
 
