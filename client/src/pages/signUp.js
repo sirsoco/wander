@@ -5,7 +5,6 @@ import axios from "axios";
 import UserContext from "../utils/userContext";
 import Login from "../components/Login/Login.js"
 
-
 // ***** LOGIN PAGE ******
 // =============================================================
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -16,6 +15,8 @@ function Signup(props) {
   const [isLoading, setIsLoading] = useState(true);
   
   const signUp = () => {
+
+    //
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
         // AXIOS CALL 
@@ -58,8 +59,7 @@ function Signup(props) {
 
           </Login>
          
-        <Button onClick={signUp} variant="primary" size="lg" block>
-        Sign-Up With Google
+        <Button onClick={signUp} variant="primary" size="lg" block>sign up with google
           </Button>
         </div>
       )
