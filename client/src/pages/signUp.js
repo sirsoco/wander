@@ -58,9 +58,11 @@ function Signup(props) {
           <Login>
 
           </Login>
-         
-        <Button onClick={signUp} variant="primary" size="lg" block>sign up with google
-          </Button>
+         <div class='row'>
+        <Button onClick={signUp} variant="primary" size="md" block>sign-up with google
+        </Button>
+        
+          </div>
         </div>
       )
     }
