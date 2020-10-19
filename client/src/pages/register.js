@@ -40,21 +40,23 @@ function Register(props) {
     lat: lat,
     lng: lng,
   };
-
+console.log('uid', config)
   //async func to transform coord.
   const MapCoordinates = async (city) => {
     API.getCoordinates(city).then((latlng) => {
       console.log("latlng:", latlng);
       console.log("config1:", config);
 
+      // set lat & lng
       config.lat = latlng.lat;
       config.lng = latlng.lng;
-      API.updateProfile(config);
+      
       console.log("config2:", config);
       API.updateProfile(config).then(
         //then mapping to map page
-        props.history.push("/map")
-      );
+       // props.history.push("/map")
+       console.log('hello')
+      ).catch(err => console.log(err));
     });
   };
 

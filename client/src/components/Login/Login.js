@@ -2,39 +2,18 @@ import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import Auth from "../Auth/Auth";
+import UserContext from "../../utils/userContext";
 import { MDBMask, MDBRow, MDBCol, MDBView, MDBContainer } from "mdbreact";
 import "./style.css";
 
-class Login extends React.Component {
-  state = {
-    collapsed: false,
-  };
 
-  handleTogglerClick = () => {
-    const { collapsed } = this.state;
-
-    this.setState({
-      collapsed: !collapsed,
-    });
-  };
-
-  render() {
-    const { collapsed } = this.state;
-    const navStyle = { marginTop: "4rem" };
-    const overlay = (
-      <div
-        id="sidenav-overlay"
-        style={{ backgroundColor: "transparent" }}
-        onClick={this.handleTogglerClick}
-      />
-    );
+function Login() {
+  
     return (
       <div id="minimalistintro">
         <Router>
           <div>
             <MDBContainer></MDBContainer>
-
-            {collapsed && overlay}
           </div>
         </Router>
         <MDBView src="https://mdbootstrap.com/img/Photos/Others/img%20%2848%29.jpg">
@@ -53,7 +32,6 @@ class Login extends React.Component {
         </MDBView>
       </div>
     );
-  }
-}
+  };
 
 export default Login;

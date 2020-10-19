@@ -3,7 +3,7 @@ import React from "react";
 const UserContext = React.createContext({
     id: "",
     setID: () => null,
-    name: "Joe",
+    name: "",
     setName: () => null,
     age: 32,
     setAge: () => null,
