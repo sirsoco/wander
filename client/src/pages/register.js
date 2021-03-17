@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import UserContext from "../utils/userContext";
+import UserContext from "../utils/authContext";
 import API from "../utils/api";
 import Nav from "../components/Nav";
 import {

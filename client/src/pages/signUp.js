@@ -2,8 +2,9 @@ import React, {useContext, useState, useEffect} from "react";
 import firebase from '../config.js';
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import UserContext from "../utils/userContext";
+import authContext from "../utils/authContext";
 import Login from "../components/Login/Login.js"
+
 
 // ***** LOGIN PAGE ******
 // =============================================================
@@ -11,7 +12,7 @@ var provider = new firebase.auth.GoogleAuthProvider();
 
 function Signup(props) { 
   // CONNECT TO THE GLOBAL USER OBJECT to set the user's unique ID from firebase
-  const userState = useContext(UserContext);
+  const userState = useContext(authContext);
   const [isLoading, setIsLoading] = useState(true);
   
   const signUp = () => {
