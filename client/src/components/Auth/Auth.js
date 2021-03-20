@@ -19,6 +19,8 @@ const firebaseConfig = {
     measurementId: "G-QGJ58S4EZZ"
   };
 
+  firebase.initializeApp(firebaseConfig)
+
   export const uiConfig = {
     // Popup signin flow rather than redirect flow.
     signInFlow: 'popup',
@@ -37,46 +39,38 @@ const firebaseConfig = {
     },
   };
 
-firebase.initializeApp(firebaseConfig)
+
+
 
 export default function Auth() {
 
-    const [isSignedIn, setState] = useState({
-        isSignedIn: false // local signed-in state 
-    })
+  const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
 
-    const signoutCB = () => {
-        console.log('hello')
-    }
-    useEffect(() => {
-        //listening to the Firebase Auth state and setting local state
-    const unregsiterAuthObserver = firebase.auth().onAuthStateChanged(
-        
-        (user) => setState({isSignedIn: !!user}));
+  // Listen to the Firebase Auth state and set the local state.
+  useEffect(() => {
+    const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
+      console.log('firebaseUiCB:', user);
+      setIsSignedIn(!!user);
+    });
+    return () => unregisterAuthObserver(); // Make sure we un-register Firebase observers when the component unmounts.
+  }, []);
 
-        console.log('user:', isSignedIn); 
-
-        // make sure we unregister Firebase observers when the component unmounts
-        return () => { unregsiterAuthObserver()
-        }
-    }, [])
-
-
-    if (!isSignedIn) {
-        return (
-          <div>
-            <h1>My App</h1>
-            <p>Please sign-in:</p>
-            <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
-          </div>
-        );
-      }
-
-      return (
-        <div>
-          <h1>My App</h1>
-          <p>Welcome ! You are now signed-in!</p>
-          <a onClick={() => firebase.auth().signOut().then(signoutCB)}>Sign-out</a>
-        </div>
-      );
+  if (!isSignedIn) {
+    return (
+      <div>
+        <h1>My App</h1>
+        <p>Please sign-in:</p>
+        <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      </div>
+    );
+  }
+  return (
+    <div>
+      <h1>My App</h1>
+      <p>Welcome {firebase.auth().currentUser.displayName}! You are now signed-in!</p>
+      <a onClick={() => firebase.auth().signOut()}>Sign-out</a>
+    </div>
+  );
 }
+
+      
