@@ -1,7 +1,7 @@
 import React from "react";
 
 const authContext = React.createContext({
-    user:'',
+    user: "",
     setUser: () => null,
     // id: "",
     // setID: () => null,
