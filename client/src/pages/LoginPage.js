@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import useAuth from '../Provider/UserProvider';
-import Auth from '../components/Auth/Auth'
+//import Auth from '../components/Auth/Auth'
 
 export default function LoginPage() {
     let history = useHistory();
@@ -22,7 +22,6 @@ export default function LoginPage() {
                 {from.pathname}
             </p>
             <a>
-                <Auth/>
             </a>
             <button onClick={login}>Log in</button>
         </div>

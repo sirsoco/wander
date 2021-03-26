@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import UserContext from "../utils/authContext";
 import API from "../utils/api";
-import Nav from "../components/Nav";
+import Nav from "../components/Nav/Nav";
 import {
   MDBContainer,
   MDBRow,

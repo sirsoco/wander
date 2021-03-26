@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import UserContext from '../utils/authContext'
 import API from '../utils/api'
 import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon } from "mdbreact";
-import Nav from "../components/Nav"
+import Nav from "../components/Nav/Nav"
 
 
 

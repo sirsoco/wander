@@ -3,6 +3,7 @@ import React, { useState, useEffect, useContext } from 'react'
 import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import firebase from '../../config';
 import useAuth from '../../utils/useAuth';
+import Nav from '../Nav/Nav'
 
 
 // const auth = useAuth();

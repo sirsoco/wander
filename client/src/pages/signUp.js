@@ -3,7 +3,10 @@ import firebase from '../config.js';
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import authContext from "../utils/authContext";
-import Login from "../components/Login/Login.js"
+import Login from "../components/Login/Login.js";
+
+import { FirebaseAuth } from "react-firebaseui";
+
 
 
 // ***** LOGIN PAGE ******
@@ -57,7 +60,6 @@ function Signup(props) {
         <div>
           
           <Login>
-
           </Login>
          <div class='row'>
         <Button onClick={signUp} variant="primary" size="md" block>sign-up with google

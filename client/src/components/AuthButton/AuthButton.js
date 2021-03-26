@@ -1,17 +1,19 @@
 import React, { useContext } from 'react'
 import { useHistory } from 'react-router-dom';
 import useAuth from '../../utils/useAuth';
+import Nav from '../Nav/Nav';
+import Auth from '../../components/Auth/Auth';
+
 
 export default function AuthButton() {
     //let history = useHistory();
     let auth = useAuth();
     
+    console.log('AuthButton', auth.user);
     return auth.user ? (
-        <p>
-            Welcome!
-        </p>
+        <Nav></Nav>
     ) : (
-        <p> You are not logged in. </p>
+       <Auth />
     )
     
 }
