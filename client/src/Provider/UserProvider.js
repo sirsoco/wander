@@ -6,17 +6,14 @@ export default function useProvideAuth() {
   // user state
   const [user, setUser] = useState(null);
 
-  const signin = () => {
-    firebase.auth().signOut( () => {
-      setUser(null);
-    });
-  };
+  const [id, setID] = useState(null);
 
-
-
+  
   return {
     user,
     setUser,
-    signin 
+    id,
+    setID,
+
   };
 }

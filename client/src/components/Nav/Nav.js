@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -9,9 +10,10 @@ import MenuIcon from '@material-ui/icons/Menu';
 import firebase from '../../config';
 import useAuth from '../../utils/useAuth';
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar(props) {
  
   const auth = useAuth();
+  let history = useHistory();
   
 
   const useStyles = makeStyles((theme) => ({
@@ -28,6 +30,11 @@ export default function ButtonAppBar() {
 
   const classes = useStyles();
 
+  const signOut =  () => {
+    firebase.auth().signOut()
+    }
+  
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -38,7 +45,7 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Wander
           </Typography>
-          <Button color="inherit" onClick={() => firebase.auth().signOut()}>signOut</Button>
+          <Button color="inherit" onClick={signOut()}>signOut</Button>
         </Toolbar>
       </AppBar>
     </div>

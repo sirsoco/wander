@@ -1,5 +1,8 @@
-import React, { useContext, useState } from "react";
-import UserContext from "../utils/authContext";
+import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from 'react-router-dom';
+import firebase from '../config.js';
+import axios from 'axios';
+import useAuth from '../utils/useAuth';
 import API from "../utils/api";
 import Nav from "../components/Nav/Nav";
 import {
@@ -13,8 +16,10 @@ import {
 } from "mdbreact";
 
 function Register(props) {
+
   //global state
-  const userState = useContext(UserContext);
+  const auth = useAuth();
+  const history = useHistory();
 
   // local states
   const [name, setName] = useState();
@@ -29,7 +34,7 @@ function Register(props) {
 
   // defining config for db
   var config = {
-    uid: userState.id,
+    uid: auth.id,
     name: name,
     age: age,
     career: career,
@@ -70,10 +75,39 @@ function Register(props) {
     console.log("city:", city);
     submitProfile(city);
   };
+  
+   useEffect( () => {
+    firebase.auth().onAuthStateChanged(function(user) {
+    
+      if (user) {
+        auth.setUser(user);
+        auth.setID('12123');
+
+        // User is signed in.
+        axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
+          .then(() => {
+            console.log(user);
+            // SET THE ID IN THE GLOBAL USER STATE
+           
+         
+            //auth.setID(user.uid)
+            // Save refresh-token to local storage
+            // userState.setImage(user.photoURL)
+            localStorage.setItem("token", user.refreshToken)
+            // save photo URL to local storage 
+            localStorage.setItem("photo", user.photoURL)
+            // Redirect to main pg (register.js)
+        console.log('user:', user);
+          });
+      } else {
+        // No user is signed in.
+      }
+    });
+   }, [])
 
   return (
     <>
-      <Nav></Nav>
+      <Nav />
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6">

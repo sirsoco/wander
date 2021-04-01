@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useHistory } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import useAuth from '../../utils/useAuth';
 import Nav from '../Nav/Nav';
 import Auth from '../../components/Auth/Auth';
@@ -13,7 +13,8 @@ export default function AuthButton() {
     return auth.user ? (
         <Nav></Nav>
     ) : (
-       <Auth />
+        <Redirect to="/public" />
+
     )
     
 }

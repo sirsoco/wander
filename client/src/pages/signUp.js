@@ -1,10 +1,10 @@
 import React, {useContext, useState, useEffect} from "react";
 import firebase from '../config.js';
+import Auth from '../components/Auth/Auth.js'
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import authContext from "../utils/authContext";
 import Login from "../components/Login/Login.js";
-
 import { FirebaseAuth } from "react-firebaseui";
 
 
@@ -20,7 +20,8 @@ function Signup(props) {
   
   const signUp = () => {
 
-    //
+    
+
     firebase.auth().signInWithPopup(provider)
       .then(({user}) => {
         // AXIOS CALL 
@@ -45,7 +46,7 @@ function Signup(props) {
     useEffect(() => {
       const token = localStorage.getItem("token");
       if(token){
-        props.history.push("/map")
+        //props.history.push("/map")
       } else {
         setIsLoading(false)
       }
@@ -58,13 +59,14 @@ function Signup(props) {
     } else {
       return (
         <div>
-          
+          <Auth />
           <Login>
+            
           </Login>
+          
          <div class='row'>
         <Button onClick={signUp} variant="primary" size="md" block>sign-up with google
         </Button>
-        
           </div>
         </div>
       )
