@@ -9,6 +9,7 @@ import {
   MDBView,
   MDBContainer
 } from 'mdbreact';
+import FirebaseUiAuth from '../Auth/Auth.js'
 import './style.css';
 
 class Login extends React.Component {
@@ -67,6 +68,7 @@ class Login extends React.Component {
                 </h1>
 
               </MDBCol>
+              <FirebaseUiAuth></FirebaseUiAuth>
             </MDBRow>
           </MDBContainer>
           

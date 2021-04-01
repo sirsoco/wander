@@ -42,13 +42,8 @@ const uiConfig = {
 
 export default function Auth(props) {
   
-   let auth = useContext(authContext)
-
-
   return (
     <div>
-      <h1>My App</h1>
-      <p>Please sign-in:</p>
       <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );
