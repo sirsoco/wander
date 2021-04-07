@@ -14,18 +14,18 @@ import firebase from 'firebase';
   //firebase.initializeApp(firebaseConfig);
 
   // Configure FirebaseUI.
-export const uiConfig = {
-  // Popup signin flow rather than redirect flow.
-  signInFlow: 'popup',
-  // We will display Google and Facebook as auth providers.
-  signInOptions: [
-    firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID
-  ],
+// export const uiConfig = {
+//   // Popup signin flow rather than redirect flow.
+//   signInFlow: 'popup',
+//   // We will display Google and Facebook as auth providers.
+//   signInOptions: [
+//     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+//     firebase.auth.FacebookAuthProvider.PROVIDER_ID
+//   ],
   
-    // redirect to Home Page 
-    signInSuccessUrl: '/Home'
+//     // redirect to Home Page 
+//     signInSuccessUrl: '/Home'
   
-};
+// };
   
 export default firebase;

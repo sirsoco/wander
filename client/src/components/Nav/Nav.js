@@ -13,6 +13,7 @@ import useAuth from '../../utils/useAuth';
 export default function ButtonAppBar(props) {
  
   const auth = useAuth();
+
   let history = useHistory();
   
 
@@ -30,9 +31,7 @@ export default function ButtonAppBar(props) {
 
   const classes = useStyles();
 
-  const signOut =  () => {
-    firebase.auth().signOut()
-    }
+  
   
 
   return (
@@ -45,7 +44,6 @@ export default function ButtonAppBar(props) {
           <Typography variant="h6" className={classes.title}>
             Wander
           </Typography>
-          <Button color="inherit" onClick={signOut()}>signOut</Button>
         </Toolbar>
       </AppBar>
     </div>

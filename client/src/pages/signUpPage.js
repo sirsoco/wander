@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import firebase from '../config.js';
-import Login from "../components/Login/Login.js";
-import FirebaseUiAuth from '../components/Auth/Auth.js';
-
+import firebase from "../config.js";
+import LoginUi from "../components/LoginUi/LoginUi.js";
 
 // public login page app intializes at
 var provider = new firebase.auth.GoogleAuthProvider();
@@ -26,8 +24,8 @@ function Signup(props) {
     return <p>Loading ...</p>;
   } else {
     return (
-      <div> 
-       <Login></Login>
+      <div>
+        <LoginUi></LoginUi>
       </div>
     );
   }

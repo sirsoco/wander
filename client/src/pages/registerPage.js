@@ -1,8 +1,7 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from "react";
 import firebase from '../config.js';
 import axios from 'axios';
-import useAuth from '../utils/useAuth';
+import authContext from '../utils/authContext';
 import API from "../utils/api";
 import Nav from "../components/Nav/Nav";
 import {
@@ -18,11 +17,12 @@ import {
 function Register(props) {
 
   //global state
-  const auth = useAuth();
-  const history = useHistory();
+  const auth = useContext(authContext);
+  
 
   // local states
   const [name, setName] = useState();
+  const [id, setID] = useState()
   const [age, setAge] = useState();
   const [career, setCareer] = useState();
   const [education, setEducation] = useState();
@@ -54,7 +54,7 @@ function Register(props) {
 
       config.lat = latlng.lat;
       config.lng = latlng.lng;
-      API.updateProfile(config);
+      //API.updateProfile(config);
       console.log("config2:", config);
       API.updateProfile(config).then(
         //then mapping to map page
@@ -78,27 +78,22 @@ function Register(props) {
   
    useEffect( () => {
     firebase.auth().onAuthStateChanged(function(user) {
-    
+    console.log('user', user);
       if (user) {
-        auth.setUser(user);
-        auth.setID('12123');
+       // AXIOS CALL 
+       axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
+       .then(() => {
+         console.log(user);
+         // SET THE ID IN THE GLOBAL USER STATE
+         auth.setID(user.uid)
+         // set user for Private Routes
+         // Save refresh-token to local storage
+         // userState.setImage(user.photoURL)
+         localStorage.setItem("token", user.refreshToken)
+         // save photo URL to local storage 
+         localStorage.setItem("photo", user.photoURL)
 
-        // User is signed in.
-        axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
-          .then(() => {
-            console.log(user);
-            // SET THE ID IN THE GLOBAL USER STATE
-           
-         
-            //auth.setID(user.uid)
-            // Save refresh-token to local storage
-            // userState.setImage(user.photoURL)
-            localStorage.setItem("token", user.refreshToken)
-            // save photo URL to local storage 
-            localStorage.setItem("photo", user.photoURL)
-            // Redirect to main pg (register.js)
-        console.log('user:', user);
-          });
+       }).catch(err => console.log("ERROR: ", err))
       } else {
         // No user is signed in.
       }

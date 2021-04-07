@@ -1,7 +1,7 @@
 import React from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import useAuth from '../Provider/UserProvider';
-//import Auth from '../components/Auth/Auth'
+import useAuth from '../utils/useAuth';
+
 
 export default function LoginPage() {
     let history = useHistory();

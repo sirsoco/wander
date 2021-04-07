@@ -1,18 +1,14 @@
-import React, {useState, useEffect } from "react";
-
+import React, {useState, useEffect, useContext } from "react";
 import GoogleMapReact from "google-map-react";
+import authContext from '../utils/authContext'
 import API from "../utils/api";
-
-import styled from "styled-components";
-
 import Marker from "../components/Marker/Marker.js";
 
-const Wrapper = styled.main`
-  width: 100%;
-  height: 100%;
-`;
 
- function Map(props) {
+ export default function Map(props) {
+
+  const auth = useContext(authContext);
+
   const [location, setLocation] = useState([]);
   
   // lat and long here are set to  center of Kazakhstan
@@ -23,7 +19,7 @@ const Wrapper = styled.main`
   
 
   const fetchPins = async () => {
-
+    console.log( auth.id);
     const getUsers =  API.getAllUsers().then((response) => {
       console.log('hello')
       setLocation(response);
@@ -53,7 +49,8 @@ useEffect(() => {
         defaultCenter={center}
         defaultZoom={0}
       >
-        { location.map((latlng) => (
+        { 
+        location.map((latlng) => (
             <Marker
               key={location.id}
               lat={latlng.lat}
@@ -67,4 +64,3 @@ useEffect(() => {
 </div>
   )
 }
-export default Map;

@@ -1,13 +1,45 @@
-import React, { createContext, useContext, useState } from "react";
-import firebase from "../config.js";
-import useProvideAuth from "./UserProvider.js";
+import React, { useState } from "react";
 import authContext from '../utils/authContext.js';
 
 export default function ProvideAuth({ children }) {
   
-  const auth = useProvideAuth();
+  const [user, setUserState] = useState({
+    id: "",
+    name: "",
+    age: "",
+    career: "",
+    education: "",
+    currentLocation: "",
+    hobbies: "",
+    destination: "",
+    setID: (id) => {
+      setUserState({...user, id})
+    },
+    setName: (name) => {
+      setUserState({...user, name})
+    },
+    setAge: (age) => {
+      setUserState({...user, age})
+    },
+    setCareer: (career) => {
+      setUserState({...user, career})
+    },
+    setEducation: (education) => {
+      setUserState({...user, education})
+    },
+    setCurrentLocation: (currentLocation) => {
+      setUserState({...user, currentLocation})
+    },
+    setHobbies: (hobbies) => {
+      setUserState({...user, hobbies})
+    },
+    setDestination: (destination) => {
+      setUserState({...user, destination})
+    }
+  });
+
   return (
-    <authContext.Provider value={auth}>
+    <authContext.Provider value={user}>
       {children}
     </authContext.Provider>
   );

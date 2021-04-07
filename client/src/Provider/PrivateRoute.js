@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import authContext from '../utils/authContext';
 import {Route, Redirect } from 'react-router-dom';
-import useAuth from '../utils/useAuth';
-
 
 export default function PrivateRoute({ children, ...rest }) {
-    
+    const auth = useContext(authContext) 
+    console.log(auth.id);
     // usercontext to check state of user
-    let auth = useAuth();
+   
 
     return(
         <Route
             {...rest}
             render={({ location }) => 
-                auth.user? (
+                auth.id? (
                     children
                 ) : (
                     <Redirect

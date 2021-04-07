@@ -10,7 +10,7 @@ import Nav from "../components/Nav/Nav"
 // =============================================================
 
 
-function Profile
+export default function ProfilePage
 (props) 
 {
   const [profile, setProfile] = useState({
@@ -24,7 +24,7 @@ function Profile
     photoURL: ""
   })
   
-  console.log("PROFILE PROPS: ", props)
+  console.log("PROFILE PROPS: ", props.location.state)
   const { matchId } = props.location.state
   useEffect(() => {
     if (matchId) {
@@ -77,7 +77,4 @@ return(
   </MDBCard> </div>
 
 )
-
 }
-export default Profile
-

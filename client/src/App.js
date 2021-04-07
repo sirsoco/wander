@@ -1,18 +1,15 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import "./App.css";
-import Nav from "./components/Nav/Nav";
-import MapPage from "./pages/map.js";
-import SignUpPage from "./pages/signUp.js";
-//import UserContext from "./utils/authContext";
-import RegisterPage from "./pages/register";
-import Profile from "./pages/profile";
-import ProvideAuth from "./Provider/ProvideAuth";
-import AuthButton from "./components/AuthButton/AuthButton.js";
-import PrivateRoute from "./Provider/PrivateRoute.js";
-import ProtectedPage from "./pages/ProtectedPage.js";
-import LoginPage from "./pages/LoginPage.js";
-import PublicPage from "./pages/PublicPage.js";
+import React, {useState} from 'react';
+import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory, useLocation } from 'react-router-dom';
+import './App.css';
+import signUpPage from './pages/signUpPage.js';
+import registerPage from './pages/registerPage';
+import MapPage from './pages/MapPage.js';
+import ProfilePage from './pages/ProfilePage';
+import ProvideAuth from './Provider/ProvideAuth';
+import PrivateRoute from './Provider/PrivateRoute.js';
+import ProtectedPage from './pages/ProtectedPage.js';
+import LoginPage from './pages/LoginPage.js';
+import PublicPage from './pages/PublicPage.js';
 
 // ***** ROUTERS ******
 // =============================================================
@@ -21,12 +18,17 @@ function App() {
     <ProvideAuth>
       <Router>
         <Switch>
-          <Route path="/public" component={SignUpPage}></Route>
-          <Route path="/login" component={LoginPage}></Route>
-          <Route path="/register" component={RegisterPage}></Route>
-          <PrivateRoute path="/map">
+          <Route exact path='/' component={signUpPage}></Route>
+          <Route exact path='/login' component={LoginPage}></Route>
+          <Route exact path='/register' component={registerPage}></Route>
+          <Route exact path='/map' component={MapPage}></Route>
+          <Route exact path='/profile' component={ProfilePage}></Route>
+          {/* <PrivateRoute path='/map'>
             <MapPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
+          {/* <PrivateRoute exact path='/profile'>
+            <ProfilePage></ProfilePage>
+          </PrivateRoute> */}
         </Switch>
       </Router>
     </ProvideAuth>

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Redirect } from 'react-router-dom';
 import useAuth from '../../utils/useAuth';
 import Nav from '../Nav/Nav';
-import Auth from '../../components/Auth/Auth';
+import Auth from '../FirebaseUiAuth/FirebaseUiAuth';
 
 
 export default function AuthButton() {
