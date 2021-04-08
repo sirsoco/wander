@@ -62,7 +62,7 @@ class Login extends React.Component {
           >
             <MDBRow>
               <MDBCol md='12' className='mb-4 text-center'>
-                <h1 className='h1-reponsive'>
+                <h1 className='signin_logo' >
                   Wandr
                 </h1>
 

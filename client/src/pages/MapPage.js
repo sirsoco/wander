@@ -1,17 +1,18 @@
 import React, {useState, useEffect, useContext } from "react";
+import { withRouter} from 'react-router-dom';
 import GoogleMapReact from "google-map-react";
 import authContext from '../utils/authContext'
 import API from "../utils/api";
 import Marker from "../components/Marker/Marker.js";
 
 
- export default function Map(props) {
+ function Map( { history }) {
 
   const auth = useContext(authContext);
 
   const [location, setLocation] = useState([]);
   
-  // lat and long here are set to  center of Kazakhstan
+  // lat and long here are set to center of Kazakhstan
   const [center, setCenter] = useState({
     lat: 48.939939,
     lng: 77.908785,
@@ -33,7 +34,7 @@ useEffect(() => {
 
   //push uid to redirect profile clicked
   const renderModal = (uid) => {
-    props.history.push("/profile", { matchId: uid });
+    history.push("/profile", { matchId: uid });
   };
 
   if (!location || location.length === 0) {
@@ -64,3 +65,4 @@ useEffect(() => {
 </div>
   )
 }
+export default withRouter(Map)

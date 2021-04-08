@@ -11,7 +11,7 @@ import Nav from "../components/Nav/Nav"
 
 
 export default function ProfilePage
-(props) 
+({location:{state:{matchId}}}) 
 {
   const [profile, setProfile] = useState({
     name: "",
@@ -24,8 +24,8 @@ export default function ProfilePage
     photoURL: ""
   })
   
-  console.log("PROFILE PROPS: ", props.location.state)
-  const { matchId } = props.location.state
+  console.log("PROFILE PROPS: ", matchId)
+  //const { matchId } = props.location.state
   useEffect(() => {
     if (matchId) {
       API.getUserProfile(matchId).then(

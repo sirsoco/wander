@@ -1,4 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Paper from '@material-ui/core/Paper';
 import firebase from '../config.js';
 import axios from 'axios';
 import authContext from '../utils/authContext';
@@ -14,12 +18,24 @@ import {
   MDBCardBody,
 } from "mdbreact";
 
+const useStyles = makeStyles({
+  root: {
+    minWidth: 275,
+    display: 'center'
+  },
+  
+  pos: {
+    marginBottom: 12,
+  }
+});
+
 function Register(props) {
+
+  const classes = useStyles();
 
   //global state
   const auth = useContext(authContext);
   
-
   // local states
   const [name, setName] = useState();
   const [id, setID] = useState()
@@ -46,16 +62,11 @@ function Register(props) {
     lng: lng,
   };
 
-  //async func to transform coord.
+  // async func to transform coord.
   const MapCoordinates = async (city) => {
     API.getCoordinates(city).then((latlng) => {
-      console.log("latlng:", latlng);
-      console.log("config1:", config);
-
       config.lat = latlng.lat;
       config.lng = latlng.lng;
-      //API.updateProfile(config);
-      console.log("config2:", config);
       API.updateProfile(config).then(
         //then mapping to map page
         props.history.push("/map")
@@ -63,7 +74,7 @@ function Register(props) {
     });
   };
 
-  //async function to complete profile
+  // async function to complete profile
   const submitProfile = async (city) => {
     // wait for coordinates to get set
     MapCoordinates(city);
@@ -72,13 +83,14 @@ function Register(props) {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
     var city = config.destination;
-    console.log("city:", city);
+    
     submitProfile(city);
   };
   
    useEffect( () => {
+
     firebase.auth().onAuthStateChanged(function(user) {
-    console.log('user', user);
+  
       if (user) {
        // AXIOS CALL 
        axios.post("/api/user", {uid: user.uid, photoURL: user.photoURL})
@@ -87,7 +99,7 @@ function Register(props) {
          // SET THE ID IN THE GLOBAL USER STATE
          auth.setID(user.uid)
          // set user for Private Routes
-         // Save refresh-token to local storage
+         // save refresh-token to local storage
          // userState.setImage(user.photoURL)
          localStorage.setItem("token", user.refreshToken)
          // save photo URL to local storage 
@@ -103,13 +115,15 @@ function Register(props) {
   return (
     <>
       <Nav />
+      <Card className={classes.root} variant="outlined">
+      <CardContent>
       <MDBContainer>
         <MDBRow>
           <MDBCol md="6">
             <MDBCard>
               <MDBCardBody>
                 <form>
-                  <p className="h4 text-center py-4">Sign up</p>
+                  <p className="h4 text-center py-4">signup</p>
                   <div className="grey-text">
                     <MDBInput
                       label="Name"
@@ -218,6 +232,8 @@ function Register(props) {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+      </CardContent>
+      </Card>
     </>
   );
 }

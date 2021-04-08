@@ -1,20 +1,28 @@
-import React, { useState, useEffect } from "react";
-import firebase from "../config.js";
-import LoginUi from "../components/LoginUi/LoginUi.js";
+import React, { useState, useEffect, useContext } from 'react';
+import firebase from '../config.js';
+import authContext from '../utils/authContext';
+import LoginUi from '../components/LoginUi/LoginUi.js';
 
-// public login page app intializes at
+
+// initializing firebase 
 var provider = new firebase.auth.GoogleAuthProvider();
 
 function Signup(props) {
-  //state for loader-indicator
+  // state for loader-indicator
   const [isLoading, setIsLoading] = useState(true);
+
+  // connecting to global context
+  const auth = useContext(authContext);
 
   useEffect(() => {
     // checking to see if user is already authenticated
     const token = localStorage.getItem("token");
-
+    
     if (token) {
-      //props.history.push("/map")
+// set authentication to true
+      auth.setID(true);
+      props.history.push("/map")
+
     } else {
       setIsLoading(false);
     }

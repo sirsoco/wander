@@ -18,17 +18,16 @@ function App() {
     <ProvideAuth>
       <Router>
         <Switch>
+          
           <Route exact path='/' component={signUpPage}></Route>
           <Route exact path='/login' component={LoginPage}></Route>
           <Route exact path='/register' component={registerPage}></Route>
-          <Route exact path='/map' component={MapPage}></Route>
-          <Route exact path='/profile' component={ProfilePage}></Route>
-          {/* <PrivateRoute path='/map'>
-            <MapPage />
-          </PrivateRoute> */}
-          {/* <PrivateRoute exact path='/profile'>
-            <ProfilePage></ProfilePage>
-          </PrivateRoute> */}
+          <Route exact path='/profile' component={ProfilePage}></Route> 
+
+          <PrivateRoute exact path='/map'>
+              <MapPage></MapPage>
+          </PrivateRoute>
+          
         </Switch>
       </Router>
     </ProvideAuth>

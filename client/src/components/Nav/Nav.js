@@ -1,51 +1,21 @@
-import React from 'react';
-import { useHistory } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import React from 'react'
+import "./style.css";
+import PersonIcon from '@material-ui/icons/Person';
+import ForumIcon from '@material-ui/icons/Forum';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import firebase from '../../config';
-import useAuth from '../../utils/useAuth';
+import "./style.css"
 
-export default function ButtonAppBar(props) {
- 
-  const auth = useAuth();
 
-  let history = useHistory();
-  
-
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      flexGrow: 1,
-    },
-    menuButton: {
-      marginRight: theme.spacing(2),
-    },
-    title: {
-      flexGrow: 1,
-    },
-  }));
-
-  const classes = useStyles();
-
-  
-  
-
-  return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Wander
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-  );
-}
+export default function Nav() {
+    return (
+        <div className="header">
+            <IconButton>
+                <PersonIcon className="header__icon" fontSize="large"/>
+            </IconButton>
+                <h1>Wandr</h1>
+                  <IconButton>
+                <ForumIcon className="header__icon" fontSize="large"/>
+            </IconButton>
+        </div>
+    )
+} 
