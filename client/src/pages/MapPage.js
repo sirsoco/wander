@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useContext } from "react";
 import { withRouter} from 'react-router-dom';
+import Nav from '../components/Nav/Nav'
 import GoogleMapReact from "google-map-react";
 import authContext from '../utils/authContext'
 import API from "../utils/api";
 import Marker from "../components/Marker/Marker.js";
 
 
- function Map( { history }) {
+ function Map( { history } ) {
 
   const auth = useContext(authContext);
 
@@ -42,9 +43,11 @@ useEffect(() => {
    // window.location.reload(false);
     return null
   }
-
+const props = { display: 'flex'}
   return (
     <div style={{ height: "100vh", width: "100%" }}>
+      <Nav
+        props={props} />
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDhIP2Tps4GjKacpqtpjJ-sI7rBrTcz15c" }}
         defaultCenter={center}

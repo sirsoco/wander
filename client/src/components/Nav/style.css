@@ -1,10 +1,8 @@
 .header{
-    display: flex;
-    justify-content: space-between;
+    display: flex-end;
+    justify-content: space-evenly;
     border-bottom: 1px solid #f9f9f9;
-    align-items: center;
-
-   
+    margin-left: 25%;
 }
 .header__logo {
     height: 40px;
@@ -12,7 +10,8 @@
 .header__icon{
     padding: 20px;
 }
-h1{
+
+.header_title{
     font-family: linotype-didot,serif;
     font-weight: 700;
     font-style: normal;

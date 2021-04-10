@@ -10,11 +10,20 @@ import PrivateRoute from './Provider/PrivateRoute.js';
 import ProtectedPage from './pages/ProtectedPage.js';
 import LoginPage from './pages/LoginPage.js';
 import PublicPage from './pages/PublicPage.js';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 // ***** ROUTERS ******
 // =============================================================
+
 function App() {
+
+  const theme = createMuiTheme({
+    typography: {
+    },});
+  
   return (
+
+    <ThemeProvider theme={theme}>
     <ProvideAuth>
       <Router>
         <Switch>
@@ -31,6 +40,7 @@ function App() {
         </Switch>
       </Router>
     </ProvideAuth>
+    </ThemeProvider>
   );
 }
 export default App;
