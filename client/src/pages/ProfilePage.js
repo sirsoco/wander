@@ -3,6 +3,7 @@ import UserContext from '../utils/authContext'
 import API from '../utils/api'
 import ProfileCard from '../components/ProfileCard/ProfileCard'
 import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBIcon } from "mdbreact";
+import WorkIcon from '@material-ui/icons/Work';
 import Nav from "../components/Nav/Nav"
 
 
@@ -56,7 +57,6 @@ return(
       name={profile.name}
       education={profile.education}
       hobbies={profile.hobbies}
-      photoURL={profile.photoURL}
       currentLocation={profile.currentLocation}
       career={profile.career}
       age={profile.age}

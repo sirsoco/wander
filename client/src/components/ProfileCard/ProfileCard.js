@@ -1,51 +1,50 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import { red } from '@material-ui/core/colors';
-import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Grid from "@material-ui/core/Grid";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Avatar from "@material-ui/core/Avatar";
+import IconButton from "@material-ui/core/IconButton";
+import Typography from "@material-ui/core/Typography";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import WorkIcon from "@material-ui/icons/Work";
+import PersonIcon from "@material-ui/icons/Person";
+import LocationOnIcon from "@material-ui/icons/LocationOn";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    
-    width: '100%',
-    paddingTop: '3%',
+    width: "100%",
+    paddingTop: "3%",
   },
-  media: {
-    height: 0,
-    paddingTop: '56.25%', // 16:9
+  paper: {
+    alignItems: "center",
+    padding: theme.spacing(2),
+    margin: "auto",
+    maxWidth: 500,
   },
+
   aviContainer: {
-    display: 'flex',
-    justifyContent: 'center',
+    display: "flex",
+    justifyContent: "center",
   },
-  avi:{
+  avi: {
     width: theme.spacing(30),
     height: theme.spacing(30),
+    display: "block",
+    justifyContent: "center",
   },
-  expand: {
-    transform: 'rotate(0deg)',
-    marginLeft: 'auto',
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest,
-    }),
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
   },
-  expandOpen: {
-    transform: 'rotate(180deg)',
-  },
-  avatar: {
-    backgroundColor: red[500],
+  title: {},
+  grid: {
+    display: "block",
+    justifyContent: "center",
   },
 }));
 
@@ -58,64 +57,28 @@ export default function ProfileCard(props) {
   };
 
   return (
-    <Card className={classes.root}>
-      <Typography display='block' align='center' variant='h2'>{props.name}</Typography>
-      <CardContent className={classes.aviContainer}>
-      <Avatar aria-label="recipe" variant="rounded"className={classes.avi}
-          src={props.src} />
-      </CardContent>
-      
-      <CardContent>
-        <Typography variant="body2"
-        align='center' color="textSecondary" component="p">
-        Welcome to my profile! Let's go an adventure ☺︎
-        </Typography>
-      </CardContent>
-      <CardActions disableSpacing>
-        <IconButton aria-label="add to favorites">
-          <FavoriteIcon />
-        </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
-        <IconButton
-          className={clsx(classes.expand, {
-            [classes.expandOpen]: expanded,
-          })}
-          onClick={handleExpandClick}
-          aria-expanded={expanded}
-          aria-label="show more"
-        >
-          <ExpandMoreIcon />
-        </IconButton>
-      </CardActions>
-      <Collapse in={expanded} timeout="auto" unmountOnExit>
-        <CardContent>
-          <Typography paragraph>Method:</Typography>
-          <Typography paragraph>
-            Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
-            minutes.
-          </Typography>
-          <Typography paragraph>
-            Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
-            heat. Add chicken, shrimp and chorizo, and cook, stirring occasionally until lightly
-            browned, 6 to 8 minutes. Transfer shrimp to a large plate and set aside, leaving chicken
-            and chorizo in the pan. Add pimentón, bay leaves, garlic, tomatoes, onion, salt and
-            pepper, and cook, stirring often until thickened and fragrant, about 10 minutes. Add
-            saffron broth and remaining 4 1/2 cups chicken broth; bring to a boil.
-          </Typography>
-          <Typography paragraph>
-            Add rice and stir very gently to distribute. Top with artichokes and peppers, and cook
-            without stirring, until most of the liquid is absorbed, 15 to 18 minutes. Reduce heat to
-            medium-low, add reserved shrimp and mussels, tucking them down into the rice, and cook
-            again without stirring, until mussels have opened and rice is just tender, 5 to 7
-            minutes more. (Discard any mussels that don’t open.)
-          </Typography>
-          <Typography>
-            Set aside off of the heat to let rest for 10 minutes, and then serve.
-          </Typography>
-        </CardContent>
-      </Collapse>
-    </Card>
+    <div className={classes.root}>
+      <Paper className={classes.paper}>
+        <Grid container className={classes.grid} spacing={2}>
+          <Grid item>
+            <Typography variant="h4">{props.name}</Typography>
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">Photos</Typography>
+          </Grid>
+          <Grid className={classes.aviContainer} item>
+            <Avatar
+              aria-label="recipe"
+              variant="rounded"
+              className={classes.Container}
+              src={props.src}
+            />
+          </Grid>
+          <Grid item>
+            <Typography variant="h4">Bio</Typography>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
   );
 }
