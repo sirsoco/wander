@@ -12,12 +12,17 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import WorkIcon from "@material-ui/icons/Work";
 import PersonIcon from "@material-ui/icons/Person";
+import SchoolIcon from '@material-ui/icons/School';
 import LocationOnIcon from "@material-ui/icons/LocationOn";
+import FlightTakeoffIcon from '@material-ui/icons/FlightTakeoff';
+import TagFacesIcon from '@material-ui/icons/TagFaces';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "100%",
-    paddingTop: "3%",
+    flexGrow: 1,
+    overflow: 'hidden',
+    padding: theme.spacing(0, 3),
+    justifyContent: "center",
   },
   paper: {
     alignItems: "center",
@@ -25,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     margin: "auto",
     maxWidth: 500,
   },
-
   aviContainer: {
     display: "flex",
     justifyContent: "center",
@@ -37,15 +41,21 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   paper: {
-    padding: theme.spacing(2),
     textAlign: "center",
+    margin: `${theme.spacing(1)}px auto`,
     color: theme.palette.text.secondary,
   },
   title: {},
   grid: {
     display: "block",
     justifyContent: "center",
+    padding: theme.spacing(0, 3)
   },
+  bioItem:{
+    display: 'flex',
+    justifyContent: 'center'
+  },
+
 }));
 
 export default function ProfileCard(props) {
@@ -59,25 +69,102 @@ export default function ProfileCard(props) {
   return (
     <div className={classes.root}>
       <Paper className={classes.paper}>
-        <Grid container className={classes.grid} spacing={2}>
-          <Grid item>
-            <Typography variant="h4">{props.name}</Typography>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+              <Grid item>
+                <Typography variant="h4">{props.name}</Typography>
+              </Grid>
           </Grid>
-          <Grid item>
-            <Typography variant="h4">Photos</Typography>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+              <Grid item>
+                <Typography variant="h4">Photos</Typography>
+              </Grid>
           </Grid>
-          <Grid className={classes.aviContainer} item>
-            <Avatar
-              aria-label="recipe"
-              variant="rounded"
-              className={classes.Container}
-              src={props.src}
-            />
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+              <Grid item>
+                <Avatar
+                aria-label="recipe"
+                variant="rounded"
+                className={classes.Container}
+                src={props.src}
+              />
+              </Grid>
           </Grid>
-          <Grid item>
-            <Typography variant="h4">Bio</Typography>
+          
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+              <Grid item>
+                <Typography variant="h4">Bio</Typography>
+              </Grid>
           </Grid>
-        </Grid>
+      
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+              <PersonIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                {props.age}
+            </Typography>
+           </Grid>
+          </Grid>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+              <PersonIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                {props.career}
+            </Typography>
+           </Grid>
+          </Grid>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+            <SchoolIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                Studied at {props.career}
+            </Typography>
+           </Grid>
+          </Grid>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+            <LocationOnIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                Currently in {props.career}
+            </Typography>
+           </Grid>
+          </Grid>
+
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+            <FlightTakeoffIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                Traveling to {props.destination}
+            </Typography>
+           </Grid>
+          </Grid>
+          
+          <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
+            <Grid item>
+            <TagFacesIcon/>
+            </Grid>
+           <Grid item>
+            <Typography>
+                Studied at {props.career}
+            </Typography>
+           </Grid>
+          </Grid>
+
       </Paper>
     </div>
   );

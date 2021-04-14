@@ -60,7 +60,7 @@ return(
       currentLocation={profile.currentLocation}
       career={profile.career}
       age={profile.age}
-      destination={profile.hobbies}
+      destination={profile.destination}
       />
       </div>
 
