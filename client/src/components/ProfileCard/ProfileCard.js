@@ -61,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
   bioItem1: {
     display: "flex",
     justifyContent: "center",
-    padding: theme.spacing(0,0,5,0)
   },
 }));
 
@@ -109,7 +108,7 @@ export default function ProfileCard(props) {
     <div className={classes.root}>
       <Paper className={classes.paper}>
 
-        <Grid container className={classes.bioItem} wrap="nowrap" spacing={10}>
+        <Grid container className={classes.bioItem} wrap="nowrap" spacing={1}>
           <Grid item>
             <ThemeProvider theme={name}>
               <Typography variant="h4">{props.name}</Typography>

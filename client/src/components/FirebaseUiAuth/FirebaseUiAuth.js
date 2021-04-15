@@ -25,14 +25,13 @@ const uiConfig = {
   //  display Google and Facebook as auth providers.
   signInOptions: [
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-    firebase.auth.FacebookAuthProvider.PROVIDER_ID,
   ],
 };
 
 export default function Auth() {
   return (
     <div>
-      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      <StyledFirebaseAuth className='FirebaseUi' uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
     </div>
   );
 }

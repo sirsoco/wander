@@ -54,3 +54,10 @@
 .row {
   position: center;
 }
+.form-group {
+  margin: 0;
+}
+
+.FirebaseUi{
+  opacity: 0.9;
+}
