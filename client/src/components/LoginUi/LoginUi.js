@@ -2,13 +2,13 @@ import React from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import {
- 
   MDBMask,
   MDBRow,
   MDBCol,
   MDBView,
   MDBContainer
 } from 'mdbreact';
+import FirebaseUiAuth from '../FirebaseUiAuth/FirebaseUiAuth.js'
 import './style.css';
 
 class Login extends React.Component {
@@ -62,11 +62,15 @@ class Login extends React.Component {
           >
             <MDBRow>
               <MDBCol md='12' className='mb-4 text-center'>
-                <h1 className='h1-reponsive'>
+                <h1 className='signin_logo' >
                   Wandr
                 </h1>
 
               </MDBCol>
+              <MDBCol className='firebaseUiContainer'>
+                <FirebaseUiAuth></FirebaseUiAuth>
+              </MDBCol>
+              
             </MDBRow>
           </MDBContainer>
           

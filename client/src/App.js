@@ -1,64 +1,49 @@
 import React, {useState} from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, Redirect, useHistory, useLocation } from 'react-router-dom';
 import './App.css';
-import Nav from "./components/Nav"
-import Map from "./pages/map.js"
-import Signup from "./pages/signUp.js"
-import UserContext from "./utils/userContext";
-import Register from "./pages/register";
-import Profile from "./pages/profile"
+import signUpPage from './pages/signUpPage.js';
+import registerPage from './pages/registerPage';
+import MapPage from './pages/MapPage.js';
+import ProfilePage from './pages/ProfilePage';
+import ProvideAuth from './Provider/ProvideAuth';
+import PrivateRoute from './Provider/PrivateRoute.js';
+import ProtectedPage from './pages/ProtectedPage.js';
+import LoginPage from './pages/LoginPage.js';
+import PublicPage from './pages/PublicPage.js';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 // ***** ROUTERS ******
 // =============================================================
+
 function App() {
-  const [user, setUserState] = useState({
-    id: "",
-    name: "",
-    age: "",
-    career: "",
-    education: "",
-    currentLocation: "",
-    hobbies: "",
-    destination: "",
-    setID: (id) => {
-      setUserState({...user, id})
+
+  const theme = createMuiTheme({
+    typography: {
+      fontFamily: 
+        'Lusitana'
     },
-    setName: (name) => {
-      setUserState({...user, name})
-    },
-    setAge: (age) => {
-      setUserState({...user, age})
-    },
-    setCareer: (career) => {
-      setUserState({...user, career})
-    },
-    setEducation: (education) => {
-      setUserState({...user, education})
-    },
-    setCurrentLocation: (currentLocation) => {
-      setUserState({...user, currentLocation})
-    },
-    setHobbies: (hobbies) => {
-      setUserState({...user, hobbies})
-    },
-    setDestination: (destination) => {
-      setUserState({...user, destination})
-    }
- 
   });
-return (
-  <Router >
-    <UserContext.Provider value={user} >
-      
-      <Switch>
-        <Route exact path="/" component={Signup} />
-        <Route exact path="/map" component={Map} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/profile" component={Profile} />
-      </Switch>
-    </UserContext.Provider>
-      
-  </Router>
+  
+  return (
+
+    <ThemeProvider theme={theme}>
+    <ProvideAuth>
+      <Router>
+        <Switch>
+          
+          <Route exact path='/' component={signUpPage}></Route>
+          <Route exact path='/login' component={LoginPage}></Route>
+          <Route exact path='/register' component={registerPage}></Route>
+          <Route exact path='/profile' component={ProfilePage}></Route> 
+
+          <PrivateRoute exact path='/map'>
+              <MapPage></MapPage>
+          </PrivateRoute>
+          
+        </Switch>
+      </Router>
+    </ProvideAuth>
+    </ThemeProvider>
   );
 }
 export default App;
