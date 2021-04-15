@@ -19,6 +19,9 @@ function App() {
 
   const theme = createMuiTheme({
     typography: {
+      fontFamily: [
+        'Lusitana'
+      ].join(',')
     },});
   
   return (
